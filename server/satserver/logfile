@@ -1,0 +1,305 @@
+[28/Oct/2015 22:54:07] DEBUG [sat.views:123] StudentSerializer(data=<QueryDict: {u'last_name': [u'Student'], u'first_name': [u'Student'], u'password': [u'password'], u'email': [u'student@itu.edu']}>):
+    email = EmailField(required=False)
+    first_name = CharField(required=False)
+    last_name = CharField(required=False)
+    gender = IntegerField(required=False)
+    password = CharField(required=False, write_only=True)
+    imei_no = CharField(required=False, write_only=True)
+    courses = ListField(child=CharField())
+[28/Oct/2015 22:54:07] DEBUG [sat.serializers:80] {"email": "student@itu.edu", "first_name": "Student", "last_name": "Student", "password": "password", "ctime": {"$date": 1446072847153}, "mtime": {"$date": 1446072847153}, "courses": []}
+[28/Oct/2015 22:54:13] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 22:54:13] DEBUG [sat.views:123] StudentSerializer(data=<QueryDict: {u'last_name': [u'Student'], u'first_name': [u'Student'], u'password': [u'password'], u'email': [u'student@itu.edu']}>):
+    email = EmailField(required=False)
+    first_name = CharField(required=False)
+    last_name = CharField(required=False)
+    gender = IntegerField(required=False)
+    password = CharField(required=False, write_only=True)
+    imei_no = CharField(required=False, write_only=True)
+    courses = ListField(child=CharField())
+[28/Oct/2015 22:54:13] DEBUG [sat.serializers:80] {"email": "student@itu.edu", "first_name": "Student", "last_name": "Student", "password": "password", "ctime": {"$date": 1446072853568}, "mtime": {"$date": 1446072853568}, "courses": []}
+[28/Oct/2015 22:54:21] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 22:54:21] DEBUG [sat.views:123] StudentSerializer(data=<QueryDict: {u'last_name': [u'Student'], u'first_name': [u'Student'], u'password': [u'password'], u'email': [u'student@itu.edu']}>):
+    email = EmailField(required=False)
+    first_name = CharField(required=False)
+    last_name = CharField(required=False)
+    gender = IntegerField(required=False)
+    password = CharField(required=False, write_only=True)
+    imei_no = CharField(required=False, write_only=True)
+    courses = ListField(child=CharField())
+[28/Oct/2015 22:54:21] DEBUG [sat.serializers:80] {"email": "student@itu.edu", "first_name": "Student", "last_name": "Student", "password": "password", "ctime": {"$date": 1446072861865}, "mtime": {"$date": 1446072861865}, "courses": []}
+[28/Oct/2015 22:54:27] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 22:54:27] DEBUG [sat.views:123] StudentSerializer(data=<QueryDict: {u'last_name': [u'Student'], u'first_name': [u'Student'], u'password': [u'password'], u'email': [u'student@itu.edu']}>):
+    email = EmailField(required=False)
+    first_name = CharField(required=False)
+    last_name = CharField(required=False)
+    gender = IntegerField(required=False)
+    password = CharField(required=False, write_only=True)
+    imei_no = CharField(required=False, write_only=True)
+    courses = ListField(child=CharField())
+[28/Oct/2015 22:54:27] DEBUG [sat.serializers:80] {"email": "student@itu.edu", "first_name": "Student", "last_name": "Student", "password": "password", "ctime": {"$date": 1446072867978}, "mtime": {"$date": 1446072867978}, "courses": []}
+[28/Oct/2015 22:58:24] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 22:58:24] DEBUG [sat.views:123] StudentSerializer(data=<QueryDict: {u'last_name': [u'Student'], u'first_name': [u'Student'], u'password': [u'password'], u'email': [u'student@itu.edu']}>):
+    email = EmailField(required=False)
+    first_name = CharField(required=False)
+    last_name = CharField(required=False)
+    gender = IntegerField(required=False)
+    password = CharField(required=False, write_only=True)
+    imei_no = CharField(required=False, write_only=True)
+    courses = ListField(child=CharField())
+[28/Oct/2015 22:58:24] DEBUG [sat.serializers:80] {"email": "student@itu.edu", "first_name": "Student", "last_name": "Student", "password": "password", "ctime": {"$date": 1446073104534}, "mtime": {"$date": 1446073104534}, "courses": []}
+[28/Oct/2015 23:01:25] DEBUG [sat.models:99] Saving student...
+[28/Oct/2015 23:01:25] DEBUG [sat.views:127] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 122, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 85, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 80, in update
+    instance.save()
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/models.py", line 103, in save
+    user.set_password(self.password)
+AttributeError: 'tuple' object has no attribute 'set_password'
+
+[28/Oct/2015 23:01:25] DEBUG [sat.views:128] EXP: 'tuple' object has no attribute 'set_password'
+[28/Oct/2015 23:02:32] DEBUG [sat.models:99] Saving student...
+[28/Oct/2015 23:02:33] DEBUG [sat.views:127] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 122, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 85, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 80, in update
+    instance.save()
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/models.py", line 106, in save
+    return super(Student, self).save(*args, **kwds)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/document.py", line 287, in save
+    self.validate(clean=clean)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/base/document.py", line 411, in validate
+    raise ValidationError(message, errors=errors)
+ValidationError: ValidationError (Student:None) (Field is required: ['gender'])
+
+[28/Oct/2015 23:02:33] DEBUG [sat.views:128] EXP: ValidationError (Student:None) (Field is required: ['gender'])
+[28/Oct/2015 23:02:47] DEBUG [sat.models:99] Saving student...
+[28/Oct/2015 23:37:04] DEBUG [sat.views:63] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 60, in post
+    user = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 47, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 51, in update
+    user.set_password(password)
+NameError: global name 'password' is not defined
+
+[28/Oct/2015 23:37:04] DEBUG [sat.views:64] EXP: global name 'password' is not defined
+[28/Oct/2015 23:38:17] DEBUG [sat.views:63] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 60, in post
+    user = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 46, in create
+    instance = User.objects.create(username=validated_data['email'])
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/queryset/base.py", line 254, in create
+    return self._document(**kwargs).save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/document.py", line 359, in save
+    raise NotUniqueError(message % unicode(err))
+NotUniqueError: Tried to save duplicate unique keys (E11000 duplicate key error index: SAT.user.$username_1 dup key: { : "student1@itu.edu" })
+
+[28/Oct/2015 23:38:17] DEBUG [sat.views:64] EXP: Tried to save duplicate unique keys (E11000 duplicate key error index: SAT.user.$username_1 dup key: { : "student1@itu.edu" })
+[28/Oct/2015 23:39:49] DEBUG [sat.views:63] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 60, in post
+    user = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 46, in create
+    instance = User.objects.create(username=validated_data['email'])
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/queryset/base.py", line 254, in create
+    return self._document(**kwargs).save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/document.py", line 359, in save
+    raise NotUniqueError(message % unicode(err))
+NotUniqueError: Tried to save duplicate unique keys (E11000 duplicate key error index: SAT.user.$username_1 dup key: { : "student1@itu.edu" })
+
+[28/Oct/2015 23:39:49] DEBUG [sat.views:64] EXP: Tried to save duplicate unique keys (E11000 duplicate key error index: SAT.user.$username_1 dup key: { : "student1@itu.edu" })
+[28/Oct/2015 23:50:28] DEBUG [sat.views:63] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 60, in post
+    user = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 49, in create
+    raise Exception("User is already registered.")
+Exception: User is already registered.
+
+[28/Oct/2015 23:50:28] DEBUG [sat.views:64] EXP: User is already registered.
+[29/Oct/2015 05:07:01] DEBUG [sat.views:141] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 137, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 99, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 94, in update
+    instance.save()
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/models.py", line 93, in save
+    return super(Student, self).save(*args, **kwds)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/document.py", line 359, in save
+    raise NotUniqueError(message % unicode(err))
+NotUniqueError: Tried to save duplicate unique keys (E11000 duplicate key error index: SAT.student.$email_1 dup key: { : "student1@itu.edu" })
+
+[29/Oct/2015 05:07:01] DEBUG [sat.views:142] EXP: Tried to save duplicate unique keys (E11000 duplicate key error index: SAT.student.$email_1 dup key: { : "student1@itu.edu" })
+[29/Oct/2015 05:14:11] DEBUG [sat.views:141] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 137, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 106, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 101, in update
+    raise Exception("User is already registered as a student")
+Exception: User is already registered as a student
+
+[29/Oct/2015 05:14:11] DEBUG [sat.views:142] EXP: User is already registered as a student
+[29/Oct/2015 05:18:13] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': []}
+[29/Oct/2015 05:18:25] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1 swe500-2']}
+[29/Oct/2015 05:18:25] DEBUG [sat.views:141] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 137, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 175, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 97, in update
+    raise Exception("Invalid course")
+Exception: Invalid course
+
+[29/Oct/2015 05:18:25] DEBUG [sat.views:142] EXP: Invalid course
+[29/Oct/2015 05:18:32] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1']}
+[29/Oct/2015 05:18:32] DEBUG [sat.views:141] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 139, in post
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 492, in data
+    ret = super(Serializer, self).data
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 228, in data
+    self._data = self.to_representation(self.instance)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 461, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/fields.py", line 1450, in to_representation
+    return [self.child.to_representation(item) for item in data]
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/fields.py", line 699, in to_representation
+    return six.text_type(value)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/models.py", line 78, in __str__
+    return self.course_key
+NameError: global name 'self' is not defined
+
+[29/Oct/2015 05:18:32] DEBUG [sat.views:142] EXP: global name 'self' is not defined
+[29/Oct/2015 05:19:02] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1']}
+[29/Oct/2015 05:19:06] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1 swe500-2']}
+[29/Oct/2015 05:19:06] DEBUG [sat.views:141] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 137, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 175, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 97, in update
+    raise Exception("Invalid course")
+Exception: Invalid course
+
+[29/Oct/2015 05:19:06] DEBUG [sat.views:142] EXP: Invalid course
+[29/Oct/2015 05:19:10] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1,swe500-2']}
+[29/Oct/2015 05:19:10] DEBUG [sat.views:141] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 137, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 175, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 97, in update
+    raise Exception("Invalid course")
+Exception: Invalid course
+
+[29/Oct/2015 05:19:10] DEBUG [sat.views:142] EXP: Invalid course
+[29/Oct/2015 05:19:18] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1,swe500-2']}
+[29/Oct/2015 05:19:18] DEBUG [sat.views:141] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 137, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 175, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 97, in update
+    raise Exception("Invalid course")
+Exception: Invalid course
+
+[29/Oct/2015 05:19:18] DEBUG [sat.views:142] EXP: Invalid course
+[29/Oct/2015 05:19:54] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1', u'swe500-2']}
+[29/Oct/2015 05:20:09] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1', u'swe500-2', u'swe500-3']}
+[29/Oct/2015 05:20:09] DEBUG [sat.views:141] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 137, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 175, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 97, in update
+    raise Exception("Invalid course")
+Exception: Invalid course
+
+[29/Oct/2015 05:20:09] DEBUG [sat.views:142] EXP: Invalid course
+[29/Oct/2015 05:20:14] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'studFN', u'last_name': u'stud', u'email': u'student1@itu.edu', u'courses': [u'swe500-1', u'swe500-2']}
+[01/Nov/2015 06:35:15] DEBUG [sat.views:163] Called
+[01/Nov/2015 06:36:06] DEBUG [sat.views:163] Called
+[01/Nov/2015 06:36:22] DEBUG [sat.views:159] Called
+[01/Nov/2015 06:36:28] DEBUG [sat.views:159] Called
+[01/Nov/2015 06:36:38] DEBUG [sat.views:159] Called
+[01/Nov/2015 06:37:09] DEBUG [sat.views:159] Called
+[01/Nov/2015 06:39:22] DEBUG [sat.views:159] Called
+[01/Nov/2015 06:43:27] DEBUG [sat.views:159] Called
+[01/Nov/2015 06:49:23] DEBUG [sat.views:29] func:func_wrapper
+[01/Nov/2015 06:49:38] DEBUG [sat.views:29] func:func_wrapper
+[01/Nov/2015 06:51:52] DEBUG [sat.views:29] func:func_wrapper
+[01/Nov/2015 06:51:52] DEBUG [sat.views:38] func:put
+[01/Nov/2015 06:51:52] DEBUG [sat.views:159] Called
+[01/Nov/2015 06:52:52] DEBUG [sat.views:29] func:func_wrapper
+[01/Nov/2015 06:52:52] DEBUG [sat.views:38] func:put
+[01/Nov/2015 06:52:52] DEBUG [sat.views:159] Called
+[01/Nov/2015 07:18:00] DEBUG [sat.views:29] func:func_wrapper
+[01/Nov/2015 07:18:33] DEBUG [sat.views:29] func:func_wrapper
+[01/Nov/2015 07:18:58] DEBUG [sat.views:29] func:func_wrapper
+[01/Nov/2015 07:18:58] DEBUG [sat.views:38] func:put
+[01/Nov/2015 07:18:58] DEBUG [sat.views:159] Called
+[01/Nov/2015 07:19:08] DEBUG [sat.views:29] func:func_wrapper
+[01/Nov/2015 07:19:08] DEBUG [sat.views:38] func:put
+[01/Nov/2015 07:19:08] DEBUG [sat.views:159] Called
+[03/Nov/2015 02:24:59] DEBUG [sat.views:165] [{'code': ObjectId('56381821c02c3cb763c99160'), 'name': u'Room Name'}, {'code': u'room2', 'name': u'Room name 2'}]
+[03/Nov/2015 02:26:47] DEBUG [sat.views:165] [{'code': u'room2', 'name': u'Room name 2'}]
+[03/Nov/2015 02:28:11] DEBUG [sat.views:165] [{'code': u'room2', 'name': u'Room name 2'}, {'code': u'room1', 'name': u'Room name 1'}]
+[03/Nov/2015 02:48:18] DEBUG [sat.serializers:163] {"_id": "500-1", "course_name": "Course1", "course_code": "500", "course_section": "1", "class_room": "room1", "duration_start": {"$date": 1442275200000}, "duration_end": {"$date": 1451865600000}, "time_start": {"$date": 1420142400000}, "time_end": {"$date": 1420149600000}, "is_weekend": false, "day_of_week": 0, "specific_dates": [], "trimester": "Fall 2015", "professor": "professor@itu.edu"}
+[03/Nov/2015 02:48:18] DEBUG [sat.serializers:163] {"_id": "500-1", "course_name": "Course1", "course_code": "500", "course_section": "1", "class_room": "room1", "duration_start": {"$date": 1442275200000}, "duration_end": {"$date": 1451865600000}, "time_start": {"$date": 1420142400000}, "time_end": {"$date": 1420149600000}, "is_weekend": false, "day_of_week": 0, "specific_dates": [], "trimester": "Fall 2015", "professor": "professor@itu.edu"}
+[03/Nov/2015 03:05:28] DEBUG [sat.serializers:164] {"_id": "500-2", "course_name": "Course2", "course_code": "500", "course_section": "2", "class_room": "room2", "duration_start": {"$date": 1442275200000}, "duration_end": {"$date": 1451865600000}, "time_start": {"$date": 1420142400000}, "time_end": {"$date": 1420149600000}, "is_weekend": false, "day_of_week": 0, "specific_dates": [], "trimester": "Fall 2015", "professor": "professor@itu.edu"}
+[03/Nov/2015 03:05:28] DEBUG [sat.serializers:164] {"_id": "500-2", "course_name": "Course2", "course_code": "500", "course_section": "2", "class_room": "room2", "duration_start": {"$date": 1442275200000}, "duration_end": {"$date": 1451865600000}, "time_start": {"$date": 1420142400000}, "time_end": {"$date": 1420149600000}, "is_weekend": false, "day_of_week": 0, "specific_dates": [], "trimester": "Fall 2015", "professor": "professor@itu.edu"}
+[03/Nov/2015 03:26:57] DEBUG [sat.views:258] <QueryDict: {u'duration_start': [u'2015-09-15T00:00:00'], u'course_name': [u'Course3'], u'course_section': [u'1'], u'duration_end': [u'2016-01-04T00:00:00'], u'time_end': [u'2015-01-01T22:00:00'], u'class_room': [u'room1'], u'trimester': [u'Fall 2015'], u'time_start': [u'2015-01-01T20:00:00'], u'course_code': [u'501'], u'professor': [u'professor@itu.edu'], u'specific_dates': [u'{2015-09-15T00:00:00,']}>
+[03/Nov/2015 03:26:57] DEBUG [sat.views:268] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[03/Nov/2015 03:27:18] DEBUG [sat.views:258] <QueryDict: {u'duration_start': [u'2015-09-15T00:00:00'], u'course_name': [u'Course3'], u'course_section': [u'1'], u'duration_end': [u'2016-01-04T00:00:00'], u'time_end': [u'2015-01-01T22:00:00'], u'class_room': [u'room1'], u'trimester': [u'Fall 2015'], u'time_start': [u'2015-01-01T20:00:00'], u'course_code': [u'501'], u'professor': [u'professor@itu.edu'], u'specific_dates': [u'[2015-09-15T00:00:00,']}>
+[03/Nov/2015 03:27:18] DEBUG [sat.views:268] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[03/Nov/2015 03:27:47] DEBUG [sat.views:258] <QueryDict: {u'duration_start': [u'2015-09-15T00:00:00'], u'course_name': [u'Course3'], u'course_section': [u'1'], u'duration_end': [u'2016-01-04T00:00:00'], u'time_end': [u'2015-01-01T22:00:00'], u'class_room': [u'room1'], u'trimester': [u'Fall 2015'], u'time_start': [u'2015-01-01T20:00:00'], u'course_code': [u'501'], u'professor': [u'professor@itu.edu'], u'specific_dates': [u'2015-09-15T00:00:00', u'2015-10-03T00:00:00', u'2015-11-18T00:00:00']}>
+[03/Nov/2015 03:27:47] DEBUG [sat.serializers:178] {u'duration_start': datetime.datetime(2015, 9, 15, 0, 0, tzinfo=<UTC>), u'course_name': u'Course3', u'course_section': u'1', u'duration_end': datetime.datetime(2016, 1, 4, 0, 0, tzinfo=<UTC>), u'time_end': datetime.datetime(2015, 1, 1, 22, 0, tzinfo=<UTC>), u'class_room': u'room1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(2015, 1, 1, 20, 0, tzinfo=<UTC>), u'course_code': u'501', u'professor': u'professor@itu.edu', u'specific_dates': [datetime.datetime(2015, 9, 15, 0, 0, tzinfo=<UTC>), datetime.datetime(2015, 10, 3, 0, 0, tzinfo=<UTC>), datetime.datetime(2015, 11, 18, 0, 0, tzinfo=<UTC>)]}
+[03/Nov/2015 03:27:47] DEBUG [sat.serializers:178] {u'duration_start': datetime.datetime(2015, 9, 15, 0, 0, tzinfo=<UTC>), u'course_name': u'Course3', u'course_section': u'1', u'duration_end': datetime.datetime(2016, 1, 4, 0, 0, tzinfo=<UTC>), u'time_end': datetime.datetime(2015, 1, 1, 22, 0, tzinfo=<UTC>), u'class_room': u'room1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(2015, 1, 1, 20, 0, tzinfo=<UTC>), u'course_code': u'501', u'professor': u'professor@itu.edu', u'specific_dates': [datetime.datetime(2015, 9, 15, 0, 0, tzinfo=<UTC>), datetime.datetime(2015, 10, 3, 0, 0, tzinfo=<UTC>), datetime.datetime(2015, 11, 18, 0, 0, tzinfo=<UTC>)]}
+[03/Nov/2015 03:48:01] DEBUG [sat.views:66] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 63, in post
+    user = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 49, in create
+    raise Exception("User is already registered.")
+Exception: User is already registered.
+
+[03/Nov/2015 03:48:01] DEBUG [sat.views:67] EXP: User is already registered.
+[03/Nov/2015 03:48:11] DEBUG [sat.views:70] SE: {'password': [u'This field is required.'], 'email': [u'This field is required.']}
+[03/Nov/2015 03:48:52] DEBUG [sat.views:70] SE: {'password': [u'This field is required.']}
+[03/Nov/2015 04:26:49] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'Shruti', u'last_name': u'Kamati', u'email': u'shruti@itu.edu', u'courses': [u'500-1', u'500-2']}
+[03/Nov/2015 04:57:00] DEBUG [sat.serializers:89] {u'gender': 2, u'first_name': u'Shruti', u'last_name': u'Kamati', u'email': u'shruti@itu.edu', u'courses': [u'500-1', u'500-2']}
+[03/Nov/2015 04:57:01] DEBUG [sat.views:144] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 140, in post
+    stud = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 107, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 102, in update
+    raise Exception("User is already registered as a student")
+Exception: User is already registered as a student
+
+[03/Nov/2015 04:57:01] DEBUG [sat.views:145] EXP: User is already registered as a student
+[03/Nov/2015 05:02:16] DEBUG [sat.views:175] Called

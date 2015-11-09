@@ -1,0 +1,255 @@
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:62] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015"}
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:63] AR
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:69] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:85] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:51] BBR CR=cr1
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:59] {"_id": {"$oid": "56156f3e5bd1ab440f2bc921"}, "minPoint": {"type": "Point", "coordinates": [0.0, 0.0]}, "maxPoint": {"type": "Point", "coordinates": [1.0, 1.0]}}
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:60] BR
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:62] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:63] AR
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:69] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:18:55] DEBUG [sat.serializers:85] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:18:55] DEBUG [sat.views:74] EXP: global name 'classroom' is not definedTraceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 72, in post
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 492, in data
+    ret = super(Serializer, self).data
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 228, in data
+    self._data = self.to_representation(self.instance)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 461, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/fields.py", line 699, in to_representation
+    return six.text_type(value)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/models.py", line 31, in __str__
+    return classroom
+NameError: global name 'classroom' is not defined
+
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:51] BBR CR=cr1
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:59] {"_id": {"$oid": "56156f3e5bd1ab440f2bc921"}, "minPoint": {"type": "Point", "coordinates": [0.0, 0.0]}, "maxPoint": {"type": "Point", "coordinates": [1.0, 1.0]}}
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:60] BR
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:62] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015"}
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:63] AR
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:69] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:85] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:51] BBR CR=cr1
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:59] {"_id": {"$oid": "56156f3e5bd1ab440f2bc921"}, "minPoint": {"type": "Point", "coordinates": [0.0, 0.0]}, "maxPoint": {"type": "Point", "coordinates": [1.0, 1.0]}}
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:60] BR
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:62] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:63] AR
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:69] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:19:14] DEBUG [sat.serializers:85] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": {"$oid": "56156f3e5bd1ab440f2bc921"}, "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:19:14] DEBUG [sat.views:74] EXP: coercing to Unicode: need string or buffer, ObjectId foundTraceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 72, in post
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 492, in data
+    ret = super(Serializer, self).data
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 228, in data
+    self._data = self.to_representation(self.instance)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 461, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/fields.py", line 699, in to_representation
+    return six.text_type(value)
+TypeError: coercing to Unicode: need string or buffer, ObjectId found
+
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:51] BBR CR=cr1
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:58] BR
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:60] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": "cr1", "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015"}
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:61] AR
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:67] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": "cr1", "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:83] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": "cr1", "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:51] BBR CR=cr1
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:58] BR
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:60] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": "cr1", "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:61] AR
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:67] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": "cr1", "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 19:49:57] DEBUG [sat.serializers:83] {"_id": "swe500-2", "course_name": "Test", "course_code": "swe500", "course_section": "2", "class_room": "cr1", "duration_start": {"$date": 1448928000000}, "duration_end": {"$date": 1449014400000}, "time_start": {"$date": -62135532000000}, "time_end": {"$date": -62135521200000}, "is_weekend": false, "day_of_week": 1, "specific_dates": [], "trimester": "Fall 2015", "professor": "abc@def.com"}
+[07/Oct/2015 20:42:43] DEBUG [sat.views:110] SE: {'duration_end': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.'], 'duration_start': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[07/Oct/2015 20:43:09] DEBUG [sat.views:110] SE: {'duration_end': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.'], 'duration_start': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[07/Oct/2015 20:43:16] DEBUG [sat.views:110] SE: {'duration_end': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.'], 'duration_start': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[07/Oct/2015 20:43:20] DEBUG [sat.views:110] SE: {'duration_end': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.'], 'duration_start': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[07/Oct/2015 20:43:47] DEBUG [sat.views:107] EXP: super(type, obj): obj must be an instance or subtype of type
+[07/Oct/2015 20:44:29] DEBUG [sat.views:107] EXP: time data '["2015-12-01"' does not match format '%Y-%m-%dT%H:%M:%S'
+[07/Oct/2015 20:44:47] DEBUG [sat.views:107] EXP: time data '["2015-12-01T00:00:00"' does not match format '%Y-%m-%dT%H:%M:%S'
+[07/Oct/2015 20:45:46] DEBUG [sat.views:107] EXP: unbound method _validate() must be called with DateTimeField instance as first argument (got datetime instance instead)
+[07/Oct/2015 20:48:49] DEBUG [sat.views:107] EXP: unbound method _validate() must be called with DateTimeField instance as first argument (got datetime instance instead)Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 103, in post
+    course = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 99, in create
+    instance = super(WeekEndCourseSerializer, self).create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 67, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 95, in update
+    instance.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/document.py", line 287, in save
+    self.validate(clean=clean)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/base/document.py", line 395, in validate
+    field._validate(value)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/base/fields.py", line 190, in _validate
+    self.validate(value, **kwargs)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/fields.py", line 719, in validate
+    super(ListField, self).validate(value)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/base/fields.py", line 374, in validate
+    self.field._validate(v)
+TypeError: unbound method _validate() must be called with DateTimeField instance as first argument (got datetime instance instead)
+
+[08/Oct/2015 02:33:28] DEBUG [sat.views:110] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:33:40] DEBUG [sat.views:110] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:33:55] DEBUG [sat.views:110] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:34:46] DEBUG [sat.views:110] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:37:53] DEBUG [sat.views:110] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:37:55] DEBUG [sat.views:110] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:39:00] DEBUG [sat.views:110] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:40:23] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'professor_email': [u'abc@def.com'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'specific_dates': [u'[2015-12-01T00:00:00,2015-12-02T00:00:00]']}>
+[08/Oct/2015 02:40:23] DEBUG [sat.views:111] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:40:50] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'professor_email': [u'abc@def.com'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'specific_dates': [u'2015-12-01T00:00:00,2015-12-02T00:00:00']}>
+[08/Oct/2015 02:40:50] DEBUG [sat.views:111] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:41:19] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'professor_email': [u'abc@def.com'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'specific_dates': [u'2015-12-01T00:00:00,2015-12-02T00:00:00']}>
+[08/Oct/2015 02:41:19] DEBUG [sat.views:111] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:44:01] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'professor_email': [u'abc@def.com'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'specific_dates': [u'[2015-12-01T00:00:00,2015-12-02T00:00:00]']}>
+[08/Oct/2015 02:44:01] DEBUG [sat.views:111] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:44:39] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'professor_email': [u'abc@def.com'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'specific_dates': [u'2015-12-01T00:00:00 2015-12-02T00:00:00']}>
+[08/Oct/2015 02:44:39] DEBUG [sat.views:111] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:45:03] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'professor_email': [u'abc@def.com'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'specific_dates': [u'2015-12-01T00:00:00']}>
+[08/Oct/2015 02:45:04] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7f85f8233550>), u'course_name': u'Test', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7f85f8233550>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7f85f8233550>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7f85f8233550>), u'course_code': u'swe500', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7f85f8233550>)]}
+[08/Oct/2015 02:45:04] DEBUG [sat.views:108] EXP: unbound method _validate() must be called with DateTimeField instance as first argument (got datetime instance instead)Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 104, in post
+    course = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 99, in create
+    instance = super(WeekEndCourseSerializer, self).create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 67, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 95, in update
+    instance.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/document.py", line 287, in save
+    self.validate(clean=clean)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/base/document.py", line 395, in validate
+    field._validate(value)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/base/fields.py", line 190, in _validate
+    self.validate(value, **kwargs)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/fields.py", line 719, in validate
+    super(ListField, self).validate(value)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/base/fields.py", line 374, in validate
+    self.field._validate(v)
+TypeError: unbound method _validate() must be called with DateTimeField instance as first argument (got datetime instance instead)
+
+[08/Oct/2015 02:49:05] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'professor_email': [u'abc@def.com'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'specific_dates': [u'2015-12-01T00:00:00']}>
+[08/Oct/2015 02:49:05] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 02:49:05] DEBUG [sat.views:108] EXP: ValidationError (Course:swe500-1) (Field is required: ['professor'])Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 104, in post
+    course = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 99, in create
+    instance = super(WeekEndCourseSerializer, self).create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 67, in create
+    return self.update(instance, validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 95, in update
+    instance.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/document.py", line 287, in save
+    self.validate(clean=clean)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/base/document.py", line 411, in validate
+    raise ValidationError(message, errors=errors)
+ValidationError: ValidationError (Course:swe500-1) (Field is required: ['professor'])
+
+[08/Oct/2015 02:50:23] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'professor': [u'abc@def.com'], u'specific_dates': [u'2015-12-01T00:00:00']}>
+[08/Oct/2015 02:50:24] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'professor': u'abc@def.com', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 02:50:24] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'professor': u'abc@def.com', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 02:50:42] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'professor': [u'abc@def.com'], u'specific_dates': [u'2015-12-01T00:00:00,2015-12-02T00:00:00']}>
+[08/Oct/2015 02:50:42] DEBUG [sat.views:111] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:50:49] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'professor': [u'abc@def.com'], u'specific_dates': [u'[2015-12-01T00:00:00,2015-12-02T00:00:00]']}>
+[08/Oct/2015 02:50:49] DEBUG [sat.views:111] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:51:14] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'professor': [u'abc@def.com'], u'specific_dates': [u'[2015-12-01T00:00:00,2015-12-02T00:00:00]']}>
+[08/Oct/2015 02:51:14] DEBUG [sat.views:111] SE: {'specific_dates': [u'Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm:ss.']}
+[08/Oct/2015 02:51:34] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'professor': [u'abc@def.com'], u'specific_dates': [u'2015-12-01T00:00:00', u'2015-12-02T00:00:00']}>
+[08/Oct/2015 02:51:34] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'professor': u'abc@def.com', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 02:51:34] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'professor': u'abc@def.com', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 02:52:01] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'professor': [u'abc@def.com'], u'specific_dates': [u'2015-12-01T00:00:00', u'2015-12-02T00:00:00', u'2015-12-03T00:00:00']}>
+[08/Oct/2015 02:52:01] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'professor': u'abc@def.com', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 3, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 02:52:01] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'professor': u'abc@def.com', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 3, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 02:52:19] DEBUG [sat.views:101] <QueryDict: {u'duration_start': [u'2015-12-01T00:00:00'], u'course_name': [u'Test-wk'], u'course_section': [u'2'], u'duration_end': [u'2015-12-02T00:00:00'], u'time_end': [u'0001-01-01T21:00:00'], u'course_key': [u'swe500-1'], u'class_room': [u'cr1'], u'trimester': [u'Fall 2015'], u'time_start': [u'0001-01-01T18:00:00'], u'course_code': [u'swe500'], u'professor': [u'abc@def.com'], u'specific_dates': [u'2015-12-01T00:00:00', u'2015-12-02T00:00:00', u'2015-12-03T00:00:00']}>
+[08/Oct/2015 02:52:19] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test-wk', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'professor': u'abc@def.com', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 3, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 02:52:19] DEBUG [sat.serializers:92] {u'duration_start': datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_name': u'Test-wk', u'course_section': u'2', u'duration_end': datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_key': u'swe500-1', u'time_end': datetime.datetime(1, 1, 1, 21, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'class_room': u'cr1', u'trimester': u'Fall 2015', u'time_start': datetime.datetime(1, 1, 1, 18, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), u'course_code': u'swe500', u'professor': u'abc@def.com', u'specific_dates': [datetime.datetime(2015, 12, 1, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 2, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>), datetime.datetime(2015, 12, 3, 0, 0, tzinfo=<django.utils.timezone.LocalTimezone object at 0x7ff9c42345d0>)]}
+[08/Oct/2015 05:27:39] DEBUG [sat.views:41] EXP: ValidationError (Professor:None) (Field is required: ['password', 'email'])
+[08/Oct/2015 05:38:21] DEBUG [sat.views:41] EXP: ValidationError (Professor:prof1@itu.edu) (Field is required: ['last_name', 'password'])
+[14/Oct/2015 04:08:26] DEBUG [sat.views:64] EXP: 'tuple' object has no attribute 'password'
+[14/Oct/2015 04:08:32] DEBUG [sat.views:64] EXP: 'tuple' object has no attribute 'password'
+[14/Oct/2015 04:19:09] DEBUG [sat.views:65] None
+[14/Oct/2015 04:19:09] DEBUG [sat.views:66] EXP: 'tuple' object has no attribute 'password'
+[14/Oct/2015 04:21:14] DEBUG [sat.views:65] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 60, in post
+    prof = serializer.save()
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 180, in save
+    self.instance = self.create(validated_data)
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/serializers.py", line 53, in create
+    return Professor.objects.create(**validated_data)
+  File "/space/itu/swe-500/venv/local/lib/python2.7/site-packages/mongoengine/queryset/base.py", line 254, in create
+    return self._document(**kwargs).save()
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/models.py", line 50, in save
+    user.password = self.password
+AttributeError: 'tuple' object has no attribute 'password'
+
+[14/Oct/2015 04:21:14] DEBUG [sat.views:66] EXP: 'tuple' object has no attribute 'password'
+[14/Oct/2015 04:52:59] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 04:53:11] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:05:05] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:05:27] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:06:10] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:06:17] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:06:33] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:07:31] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:08:54] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:10:39] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:10:50] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:11:36] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:11:38] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:12:06] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:12:08] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:12:44] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:13:03] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:13:03] DEBUG [sat.serializers:26] Inside user
+[14/Oct/2015 05:13:28] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:13:28] DEBUG [sat.serializers:24] user = 
+[14/Oct/2015 05:42:52] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:42:52] DEBUG [sat.serializers:24] user = 
+[14/Oct/2015 05:50:39] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 05:50:46] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 06:03:56] DEBUG [sat.serializers:19] {"_id": {"$oid": "561dd5391d41c8397689ec2d"}, "_cls": "User", "username": "prof3@itu.edu", "password": "test_pwd", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444795705888}, "date_joined": {"$date": 1444795705923}, "user_permissions": []}
+[14/Oct/2015 06:04:45] DEBUG [sat.serializers:19] {"_id": {"$oid": "561def351d41c84200f28752"}, "_cls": "User", "username": "prof4@itu.edu", "password": "pbkdf2_sha256$20000$1dOm92NOri33$IO8eTuQf3GqwGPKhmkTihva08QE0xSOhHGrkQ2xy6kY=", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444802357580}, "date_joined": {"$date": 1444802357580}, "user_permissions": []}
+[14/Oct/2015 06:04:46] DEBUG [sat.serializers:22] user = 
+[14/Oct/2015 06:04:46] DEBUG [sat.serializers:24] Inside user
+[14/Oct/2015 06:04:59] DEBUG [sat.serializers:19] {"_id": {"$oid": "561def351d41c84200f28752"}, "_cls": "User", "username": "prof4@itu.edu", "password": "pbkdf2_sha256$20000$1dOm92NOri33$IO8eTuQf3GqwGPKhmkTihva08QE0xSOhHGrkQ2xy6kY=", "is_staff": false, "is_active": true, "is_superuser": false, "last_login": {"$date": 1444802357580}, "date_joined": {"$date": 1444802357580}, "user_permissions": []}
+[14/Oct/2015 06:04:59] DEBUG [sat.serializers:22] user = 
+[26/Oct/2015 22:58:02] DEBUG [sat.views:50] AnonymousUser
+[26/Oct/2015 23:24:27] DEBUG [sat.views:50] AnonymousUser
+[26/Oct/2015 23:24:47] DEBUG [sat.views:50] AnonymousUser
+[26/Oct/2015 23:35:39] DEBUG [sat.views:50] AnonymousUser
+[27/Oct/2015 02:31:23] DEBUG [sat.views:50] AnonymousUser
+[27/Oct/2015 02:33:54] DEBUG [sat.views:50] sriram@itu.edu
+[27/Oct/2015 02:34:04] DEBUG [sat.views:50] sriram@itu.edu
+[27/Oct/2015 02:34:16] DEBUG [sat.views:50] sriram@itu.edu
+[27/Oct/2015 04:29:28] DEBUG [sat.views:33] UN:sriram@itu.edu EM:sriram@itu.edu
+[27/Oct/2015 04:29:37] DEBUG [sat.views:33] UN:sriram@itu.edu EM:sriram@itu.edu
+[27/Oct/2015 04:30:37] DEBUG [sat.views:33] UN:sriram@itu.edu EM:sriram@itu.edu
+[27/Oct/2015 04:30:40] DEBUG [sat.views:33] UN:sriram@itu.edu EM:sriram@itu.edu
+[27/Oct/2015 04:32:58] DEBUG [sat.views:33] UN:sriram@itu.edu EM:sriram@itu.edu
+[27/Oct/2015 04:33:13] DEBUG [sat.views:33] UN:sriram@itu.edu EM:sriram1@itu.edu
+[27/Oct/2015 04:33:29] DEBUG [sat.views:33] UN:sriram@itu.edu EM:sriram1@itu.edu
+[27/Oct/2015 04:33:37] DEBUG [sat.views:33] UN:sriram@itu.edu EM:sriram@itu.edu
+[28/Oct/2015 19:49:48] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 19:50:33] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 19:51:49] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 19:51:49] DEBUG [sat.serializers:80] Student object
+[28/Oct/2015 19:52:20] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 19:52:20] DEBUG [sat.serializers:80] {"email": "student@itu.edu", "first_name": "Student", "last_name": "Student", "password": "password", "ctime": {"$date": 1446061940933}, "mtime": {"$date": 1446061940932}, "courses": []}
+[28/Oct/2015 22:52:53] DEBUG [sat.views:122] Everything just fine
+[28/Oct/2015 22:52:53] DEBUG [sat.views:129] Traceback (most recent call last):
+  File "/space/itu/swe-500/venv/attendanceSWE2015/server/satserver/sat/views.py", line 123, in post
+    logger.debug (serializer.to_json())
+AttributeError: 'StudentSerializer' object has no attribute 'to_json'
+
+[28/Oct/2015 22:52:53] DEBUG [sat.views:130] EXP: 'StudentSerializer' object has no attribute 'to_json'
+[28/Oct/2015 22:54:07] DEBUG [sat.views:122] Everything just fine
