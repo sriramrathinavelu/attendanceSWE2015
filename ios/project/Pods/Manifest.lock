@@ -1,0 +1,16 @@
+PODS:
+  - Alamofire (3.1.2)
+  - DBAlertController (0.2.1)
+  - SwiftValidator (3.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.0)
+  - DBAlertController
+  - SwiftValidator (= 3.0.1)
+
+SPEC CHECKSUMS:
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
+  DBAlertController: 5941c4f38daad9ae803ab3739e79b5b7a78e1da4
+  SwiftValidator: c59223144754045d7691febdc3b3ecc2e73b609c
+
+COCOAPODS: 0.39.0
