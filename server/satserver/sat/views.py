@@ -165,6 +165,21 @@ class ClassRoomGet(APIView):
 		logger.debug (listObj)
 		return Response(listObj, status=status.HTTP_200_OK)
 		
+class CourseGet(APIView):
+
+	@authenticationRequired
+	def get(self, request):
+	
+		def getCourseandName(course):
+			return {
+				"key"	:	course.course_key,
+				"name"	: 	course.course_name,
+			}
+
+		courses = Course.objects.filter()
+		listObj = map(getCourseandName, courses)
+		logger.debug (listObj)
+		return Response(listObj, status=status.HTTP_200_OK)
 
 class VoiceSampleUpload(APIView):
 	parser_classes = (FileUploadParser,)

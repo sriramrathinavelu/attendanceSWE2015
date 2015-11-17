@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^student/(?P<email>[^@]+@[^@]+\.[^@]+)/$', StudentCRUD.as_view()),
 	url(r'^voice/(?P<email>[^@]+@[^@]+\.[^@]+)/(?P<filename>\w+\.?\w*)/$', VoiceSampleUpload.as_view()),
 	url(r'^classrooms/$', ClassRoomGet.as_view()),
+	url(r'^courses/$', CourseGet.as_view()),
     url(r'^weekdaycourse/$', WeekDayCourseCRUD.as_view()),
     url(r'^weekdaycourse/(?P<course_key>[a-z0-9]+-\d+)/$', WeekDayCourseCRUD.as_view()),
     url(r'^weekendcourse/$', WeekEndCourseCRUD.as_view()),
