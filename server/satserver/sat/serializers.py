@@ -15,7 +15,10 @@ class MongoAuthTokenSerializer(serializers.Serializer):
 		username = attrs.get('email')
 		password = attrs.get('password')
 		if username and password:
-			user = User.objects.get(username=username)
+			try:
+				user = User.objects.get(username=username)
+			except User.DoesNotExist, e:
+				raise serializers.ValidationError("Unknown user " + username)
 			user.backend = 'mongoengine.django.auth.MongoEngineBackend'
 			user = authenticate(username=username, password=password)
 			if user:
@@ -60,6 +63,7 @@ class ProfessorSerializer(serializers.Serializer):
 	first_name = serializers.CharField(required=False)
 	last_name = serializers.CharField(required=False)
 	imei_no = serializers.CharField(write_only=True, required=False)
+	courses = serializers.ListField(read_only=True, child=serializers.CharField())
 
 	def update(self, instance, validated_data):
 		for k, v in validated_data.iteritems():

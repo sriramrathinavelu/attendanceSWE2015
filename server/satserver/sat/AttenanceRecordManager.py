@@ -47,6 +47,10 @@ Get all the classes for the date
 Fill up the attendance for each student in each of the class.
 """
 
+
+def getDateWithTimeZone(dateTimeString):
+	return datetime.datetime.strptime(dateTimeString, '%Y-%m-%dT%H:%M:%S').replace(tzinfo=pytz.timezone(TIMEZONE))
+
 def getCurrentLocalDateTime():
 	curDateTime = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
 	curDateTime = curDateTime.astimezone(pytz.timezone(TIMEZONE))
@@ -80,6 +84,7 @@ def __getRecord(student, course, curDateTime):
 		today = datetime.datetime(curDateTime.year, curDateTime.month, curDateTime.day,
 			0, 0, 0).replace(tzinfo=pytz.timezone(TIMEZONE))
 		tomorrow = today + datetime.timedelta(days=1)
+		logger.warn(str(today) + " : " + str(tomorrow))
 		record = AttendanceRecord.objects.get(
 			student=student,
 			course=course,
@@ -161,4 +166,4 @@ def start():
 	generateReport(course, stud, professor, startDate, endDate)
 
 
-start()
+#start()

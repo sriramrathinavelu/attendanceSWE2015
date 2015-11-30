@@ -44,6 +44,7 @@ class Professor(Document):
 	email = EmailField(required=True, unique=True, null=False, primary_key=True)
 	first_name = StringField(required=True, null=False)
 	last_name = StringField(required=True, null=False)
+	courses = ListField(ReferenceField('Course'))
 	imei_no = StringField()
 	ctime = DateTimeField(default=now)
 	mtime = DateTimeField(default=now)
@@ -54,6 +55,17 @@ class Professor(Document):
 	def save(self, *args, **kwds):
 		self.mtime = now()
 		return super(Professor, self).save(*args, **kwds)
+
+	def hasCourse(self, courseKey):
+		for course in self.courses:
+			if course.course_key == courseKey:
+				return True
+		return False
+
+	def addCourse(self, newCourse):
+		if not self.hasCourse(newCourse.course_key):
+			self.courses.append(newCourse)
+			return super(Professor, self).save()
 
 
 class ClassRoom(Document):
@@ -83,6 +95,12 @@ class Course (Document):
 
 	def __str__(self):
 		return self.course_key
+
+	def save(self, *args, **kwds):
+		thisCourse = super(Course, self).save(*args, **kwds)
+		if self.professor: 
+			self.professor.addCourse(thisCourse)
+		return thisCourse
 
 class Student(Document):
 	email = EmailField(required=True, unique=True, null=False)

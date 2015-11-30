@@ -5,11 +5,15 @@ from rest_framework import status
 from django.http import Http404
 from serializers import *
 from models import *
+
+import AttenanceRecordManager
 import traceback
+import datetime
 import logging
 import os.path
 import json
 
+from django.core import serializers as djangoSerializers
 from django.contrib.auth import login
 from mongoengine.django.auth import User
 from mongoengine.queryset import DoesNotExist
@@ -33,11 +37,24 @@ def authenticationRequired(func):
 
 def authorizationRequired(func):
 	def func_wrapper(self, request, *args, **kwds):
+		logger.debug(request.user.username + "-" + kwds.get('email'))
 		if request.user.username != kwds.get('email') and request.user.username != request.POST.get('email') and request.user.username != request.POST.get('professor'):
 			return Response("You do not have sufficient permission", status=status.HTTP_403_FORBIDDEN)
 		return func(self, request, *args, **kwds)
 	return func_wrapper
-		
+
+def professorRequired(func):
+	def func_wrapper(self, request, *args, **kwds):
+		try:
+			theProf = Professor.objects.get(email=request.user.username)
+			if request.POST.get('course_key'):
+				course = Course.objects.get(course_key=request.POST.get('course_key'))
+				if course.professor != theProf:
+					return Response("Professor! you are not incharge of this course", status=status.HTTP_403_FORBIDDEN)
+		except:
+			return Response("Only a professor can do this", status=status.HTTP_403_FORBIDDEN)
+		return func(self, request, *args, **kwds)
+	return func_wrapper
 
 # Create your views here.
 
@@ -108,7 +125,67 @@ class ProfessorCRUD(APIView):
 		else:
 			logger.debug ("SE: " + str(serializer.errors))
 			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-			
+	
+class ProfessorCourse(APIView):
+
+	def get_prof(self, email):
+		try:
+			return Professor.objects.get(email=email)
+		except Professor.DoesNotExist:
+			raise Http404
+
+	@authenticationRequired
+	@authorizationRequired
+	def get(self, request, email=None, format=None):
+		if not email:
+			return Response('Email is required', status=status.HTTP_400_BAD_REQUEST)
+		prof = self.get_prof(email=email)
+		serializedCourses = []
+		for course in prof.courses:
+			if course.is_weekend:
+				serializedCourses.append(WeekEndCourseSerializer(course).data)
+			else:
+				serializedCourses.append(WeekDayCourseSerializer(course).data)
+		return Response(serializedCourses, status=status.HTTP_200_OK)
+
+class StudentCourse(APIView):
+
+	def get_stud(self, email):
+		try:
+			return Student.objects.get(email=email)
+		except Student.DoesNotExist:
+			raise Http404
+
+	def get(self, request, email=None, format=None):
+		if not email:
+			return Response('Email is required', status=status.HTTP_400_BAD_REQUEST)
+		stud = self.get_stud(email)
+		serializedCourses = []
+		for course in stud.courses:
+			if course.is_weekend:
+				serializedCourses.append(WeekEndCourseSerializer(course).data)
+			else:
+				serializedCourses.append(WeekDayCourseSerializer(course).data)
+		return Response(serializedCourses, status=status.HTTP_200_OK)
+
+
+
+class ManualAttendance(APIView):
+
+	@authenticationRequired
+	@professorRequired
+	def post(self, request):
+		try:
+			stud = Student.objects.get(email=request.data['email'])
+			course = Course.objects.get(course_key=request.data['course_key'])
+			dateTime = AttenanceRecordManager.getDateWithTimeZone(request.data['datetime'])
+			AttenanceRecordManager.markPresent(stud, course, dateTime)
+			return Response("Done", status=status.HTTP_201_CREATED)
+		except Student.DoesNotExist, e:
+			return Response("Invalid student", status=status.HTTP_400_BAD_REQUEST)
+		except Course.DoesNotExist, e:
+			return Response("Invalid Course", status=status.HTTP_400_BAD_REQUEST)
+		
 			
 class StudentCRUD(APIView):
 
