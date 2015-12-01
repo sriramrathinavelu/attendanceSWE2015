@@ -37,7 +37,6 @@ def authenticationRequired(func):
 
 def authorizationRequired(func):
 	def func_wrapper(self, request, *args, **kwds):
-		logger.debug(request.user.username + "-" + kwds.get('email'))
 		if request.user.username != kwds.get('email') and request.user.username != request.POST.get('email') and request.user.username != request.POST.get('professor'):
 			return Response("You do not have sufficient permission", status=status.HTTP_403_FORBIDDEN)
 		return func(self, request, *args, **kwds)
