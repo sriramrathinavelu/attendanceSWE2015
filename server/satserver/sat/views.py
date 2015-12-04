@@ -11,6 +11,7 @@ import traceback
 import datetime
 import logging
 import os.path
+import shutil
 import json
 
 from django.core import serializers as djangoSerializers
@@ -20,8 +21,9 @@ from mongoengine.queryset import DoesNotExist
 from django.contrib import messages
 
 from rest_framework import authentication
-
 from rest_framework.authtoken.views import ObtainAuthToken
+
+from sat.SAT.code import interface
 
 logger = logging.getLogger(__name__)
 
@@ -55,6 +57,14 @@ def professorRequired(func):
 		return func(self, request, *args, **kwds)
 	return func_wrapper
 
+def getStudGender(email):
+	stud = Student.objects.get(email=email)
+	return SATConstants.GENDER_MAP [stud.gender]
+
+
+def fileNameFromEmail(email):
+	return email.replace('@','_').replace('.','_')
+
 # Create your views here.
 
 class ObtainMongoAuthToken(ObtainAuthToken):
@@ -66,7 +76,7 @@ class ObtainMongoAuthToken(ObtainAuthToken):
 		if serializer.is_valid():
 			user = serializer.validated_data['user']
 			token, created = MongoToken.objects.get_or_create(user=user)
-			return Response({'token': token.key})
+			return Response({'token': token.key}, status=HTTP_200_OK)
 		else:
 			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -77,7 +87,9 @@ class UserRegistration(APIView):
 		if serializer.is_valid():
 			try:
 				user = serializer.save()
-				return Response("User successfully added", status=status.HTTP_201_CREATED)
+				token, created = MongoToken.objects.get_or_create(user=user)
+				return Response({'token': token.key}, status=status.HTTP_201_CREATED)
+				# return Response("User successfully added", status=status.HTTP_201_CREATED)
 			except Exception, e:
 				logger.debug (traceback.format_exc())
 				logger.debug ("EXP: " + str(e))
@@ -257,7 +269,7 @@ class CourseGet(APIView):
 		logger.debug (listObj)
 		return Response(listObj, status=status.HTTP_200_OK)
 
-class VoiceSampleUpload(APIView):
+class TheAttendance(APIView):
 	parser_classes = (FileUploadParser,)
 
 	@authenticationRequired
@@ -267,13 +279,68 @@ class VoiceSampleUpload(APIView):
 			voiceSample = request.FILES['file']
 		except KeyError, e:
 			return Response("Missing file agrument 'file'", status=status.HTTP_400_BAD_REQUEST)
+		if not filename:
+			return Response("Missing argument 'filename'", status=status.HTTP_400_BAD_REQUEST)
+		if len(filename.split('.')) != 2:
+			return Response("Filename having . or missing extension", status=status.HTTP_400_BAD_REQUEST)
 		APPDIR = os.path.abspath(os.path.dirname(__file__))
-		fileName = os.path.join(APPDIR, 'data', email) 
+		srcExtn = filename.split('.')[1]
+		fileName = os.path.join(APPDIR, 'attendance', fileNameFromEmail(email) + '.' + srcExtn)
+		archiveFileName = os.path.join(APPDIR, 'attendance', 'archive', fileNameFromEmail(email) + '-' + datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + '.' + srcExtn)
+		tempSampleFile = open(fileName, 'w+')
+		tempSampleFile.write(voiceSample.read())
+		tempSampleFile.close()
+		voiceSample.close()
+		shutil.copy(fileName, archiveFileName)
+		try:
+			os.chdir(os.path.join(APPDIR, 'SAT', 'code'))
+			interface.testing(fileName, fileNameFromEmail(email), getStudGender(email))
+		except Student.DoesNotExist, e:
+			return Response("Student doesn't exist", status=status.HTTP_400_BAD_REQUEST)
+		except KeyError, e:
+			return Response("Improperly configured student gender", status=status.HTTP_400_BAD_REQUEST)
+		return Response("File uploaded successfully", status=status.HTTP_202_ACCEPTED)
+
+
+
+class VoiceSampleUpload(APIView):
+	parser_classes = (FileUploadParser,)
+
+	@authenticationRequired
+	@authorizationRequired
+	def put(self, request, email=None, filename=None, format=None):
+		logger.debug("Incoming request")
+		try:
+			voiceSample = request.FILES['file']
+		except KeyError, e:
+			return Response("Missing file agrument 'file'", status=status.HTTP_400_BAD_REQUEST)
+		if not filename:
+			return Response("Missing argument 'filename'", status=status.HTTP_400_BAD_REQUEST)
+		if len(filename.split('.')) != 2:
+			return Response("Filename having . or missing extension", status=status.HTTP_400_BAD_REQUEST)
+		APPDIR = os.path.abspath(os.path.dirname(__file__))
+		srcExtn = filename.split('.')[1]
+		fileName = os.path.join(APPDIR, 'data', fileNameFromEmail(email) + '.' + srcExtn)
 		if not os.path.isfile(fileName):
 			tempSampleFile = open(fileName, 'w+')
 			tempSampleFile.write(voiceSample.read())
 			tempSampleFile.close()
 			voiceSample.close()
+			try:
+				os.chdir(os.path.join(APPDIR, 'SAT', 'code'))
+				interface.register(fileName, fileNameFromEmail(email), getStudGender(email))
+			except Student.DoesNotExist, e:
+				try:
+					os.remove(fileName)
+				except Exception, e:
+					pass
+				return Response("Student doesn't exist", status=status.HTTP_400_BAD_REQUEST)
+			except KeyError, e:
+				try:
+					os.remove(fileName)
+				except Exception, e:
+					pass
+				return Response("Improperly configured student gender", status=status.HTTP_400_BAD_REQUEST)
 			return Response("File uploaded successfully", status=status.HTTP_202_ACCEPTED)
 		return Response("File already present. Contact Administrator to register again", status=status.HTTP_406_NOT_ACCEPTABLE)
 
