@@ -63,7 +63,7 @@ def getCurrentLocalDateTime():
 def getCurrentDay(curDate):
 	return curDate.weekday()
 
-def getCurrentDate(curDateTime)
+def getCurrentDate(curDateTime):
 	return datetime.datetime(
             curDateTime.year,
             curDateTime.month,
@@ -195,7 +195,7 @@ def generateReport(course, student, professor, startDate, endDate):
 				'Student'	:	REPORT_COLUMNS['Student'](student),
 				'Key'		:	REPORT_COLUMNS['Key'](course),
 				'Course'	:	REPORT_COLUMNS['Course'](course),
-				'Date'		:	REPORT_COLUMNS['Date'](course)
+				'Date'		:	REPORT_COLUMNS['Date'](course),
 				'Time'		:	REPORT_COLUMNS['Time'](record),
 				'Status'	:	REPORT_COLUMNS['Status'](record),
 			})
@@ -226,4 +226,4 @@ def start():
 	#generateReport(course, stud, professor, startDate, endDate)
 
 
-start()
+#start()
