@@ -24,6 +24,9 @@ def getCourseName(obj):
 def getCourseKey(obj):
 	return obj.course_key
 
+def getDate(obj):
+	return obj.date.strftime("%Y-%m-%d")	
+
 def getCheckinTime(obj):
 	return obj.checkin_time.replace(tzinfo=pytz.utc).astimezone(pytz.timezone(TIMEZONE))
 
@@ -34,8 +37,9 @@ REPORT_COLUMNS = OrderedDict()
 
 REPORT_COLUMNS["Professor"]		=	getProfessorName
 REPORT_COLUMNS["Student"]		=	getStudentName
-REPORT_COLUMNS["Course"]		=	getCourseName
 REPORT_COLUMNS["Key"]			=	getCourseKey
+REPORT_COLUMNS["Course"]		=	getCourseName
+REPORT_COLUMNS["Date"]			=	getDate
 REPORT_COLUMNS["Time"]			=	getCheckinTime
 REPORT_COLUMNS["Status"]		=	getCheckinStatus
 
@@ -57,13 +61,27 @@ def getCurrentLocalDateTime():
 	return curDateTime + datetime.timedelta(days=0)
 
 def getCurrentDay(curDate):
-	return 1 # curDate.weekday()
+	return curDate.weekday()
+
+def getCurrentDate(curDateTime)
+	return datetime.datetime(
+            curDateTime.year,
+            curDateTime.month,
+            curDateTime.day,
+            0,
+            0,
+            0
+	).replace(tzinfo=pytz.timezone(TIMEZONE))
 
 def getWeekDayCourses(weekDay):
 	return Course.objects.filter(day_of_week = weekDay)
 
 def getStudentsByCourse(course):
 	return Student.objects.filter(courses=course)
+
+def getCourseStartDate(course):
+	return course.duration_start.replace(tzinfo=pytz.utc).astimezone(pytz.timezone(TIMEZONE))
+
 
 
 def __getRecords(course, student, startDate, endDate):
@@ -96,13 +114,54 @@ def __getRecord(student, course, curDateTime):
 		return None
 
 
+def getDates(startDate, endDate, dayOfWeek):
+	dates = []
+	while startDate.weekday() != dayOfWeek:
+		startDate = startDate + datetime.timedelta(days=1)
+	
+	while startDate < endDate:
+		dates.append(startDate)
+		startDate = startDate + datetime.timedelta(days=7)
+	return dates
 
-def setupAttendanceRecord(student, course, curDateTime):
+def setupAttendanceRecords(student, course):
+	if course.is_weekend:
+		dates = course.specific_dates
+	else:
+		startDate = course.duration_start
+		endDate = course.duration_end
+		day_of_week = course.day_of_week
+
+	for date in dates:
+		setupAttendanceRecord(student, course, getCurrentDate(date), date)
+
+
+def generateLedger():
+	# Weekday Courses
+	curDateTime = getCurrentLocalDateTime()
+	curDate = getCurrentDate(curDateTime)
+	curDay = getCurrentDay(curDateTime)
+	courses = getWeekDayCourses(curDay)
+	for course in courses:
+		students = getStudentsByCourse(course)
+		for student in students:
+			setupAttendanceRecord(student, course, curDate, curDateTime)
+
+	# Weekend Courses
+	weekendCourses = courses.objects.filter(is_weekend=True)
+	for course in weekendCourses:
+		if curDate in course.specific_dates:
+			students = getStudentsByCourse(course)
+			for student in students:
+				setupAttendanceRecord(student, course, curDate, curDateTime)
+			
+def setupAttendanceRecord(student, course, curDate, curDateTime):
 	if not __getRecord(student, course, curDateTime):
 		record = AttendanceRecord()
 		record.student = student
 		record.course = course
 		record.professor = Professor.objects.get(email=course.professor.id)
+		record.date = curDate
 		record.checkin_time = curDateTime
 		record.checkin_status = SATConstants.ABSENT
 		record.save()
@@ -134,8 +193,9 @@ def generateReport(course, student, professor, startDate, endDate):
 			writer.writerow({
 				'Professor'	:	REPORT_COLUMNS['Professor'](professor),
 				'Student'	:	REPORT_COLUMNS['Student'](student),
-				'Course'	:	REPORT_COLUMNS['Course'](course),
 				'Key'		:	REPORT_COLUMNS['Key'](course),
+				'Course'	:	REPORT_COLUMNS['Course'](course),
+				'Date'		:	REPORT_COLUMNS['Date'](course)
 				'Time'		:	REPORT_COLUMNS['Time'](record),
 				'Status'	:	REPORT_COLUMNS['Status'](record),
 			})
@@ -154,7 +214,7 @@ def start():
 		students = getStudentsByCourse(course)
 		for student in students:
 			print student, course
-			setupAttendanceRecord(student, course, curDateTime)
+			setupAttendanceRecord(student, course, getCurrentDate(curDateTime), curDateTime)
 			markPresent(student, course, curDateTime)
 	
 	stud = Student.objects.get(email='student1@itu.edu')
@@ -163,7 +223,7 @@ def start():
 	startDate = datetime.datetime.strptime("2015-11-01T0:0:0", '%Y-%m-%dT%H:%M:%S').replace(tzinfo=pytz.timezone(TIMEZONE))
 	endDate = datetime.datetime.strptime("2015-11-02T0:0:0", '%Y-%m-%dT%H:%M:%S').replace(tzinfo=pytz.timezone(TIMEZONE))
 	print startDate, endDate
-	generateReport(course, stud, professor, startDate, endDate)
+	#generateReport(course, stud, professor, startDate, endDate)
 
 
-#start()
+start()

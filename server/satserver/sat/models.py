@@ -125,6 +125,7 @@ class AttendanceRecord(Document):
 	professor = ReferenceField('Professor')
 	student = ReferenceField('Student')
 	course = ReferenceField('Course')
+	date = DateTimeField(null=False)
 	checkin_time = DateTimeField(null=True)
 	checkin_status = IntField(null=False)
 	voice_auth = StringField(null=True) # File with authenticating voice segment
