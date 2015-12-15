@@ -15,6 +15,7 @@ class SATConstants:
 	ABSENT = 2
 	MALE = 1		# Hope making MALE 1 doesn't make me a sexist
 	FEMALE = 2
+	GENDER_MAP = {MALE:'M', FEMALE:'F'}
 
 
 # TODO: Should I have both required=True and null=False or are they redundant?

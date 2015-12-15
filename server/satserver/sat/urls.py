@@ -18,7 +18,8 @@ urlpatterns = [
     url(r'^weekdaycourse/(?P<course_key>[a-z0-9]+-\d+)/$', WeekDayCourseCRUD.as_view()),
     url(r'^weekendcourse/$', WeekEndCourseCRUD.as_view()),
     url(r'^weekendcourse/(?P<course_key>[a-z0-9]+-\d+)/$', WeekEndCourseCRUD.as_view()),
-	url(r'^attendance/manual/$', ManualAttendance.as_view())
+	url(r'^attendance/manual/$', ManualAttendance.as_view()),
+	url(r'^attendance/(?P<email>[^@]+@[^@]+\.[^/]+)/(?P<filename>\w+\.?\w*)/$', TheAttendance.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

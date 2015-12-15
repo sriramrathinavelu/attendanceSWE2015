@@ -22,11 +22,18 @@ configFiles = {
 
 
 def trainUBM(sourceFolder, gender):
+	# Holds all the filenames of the voices that makes the test and training set
 	dataList = "../data/UBM/UBM-%s.lst"%gender
+	# Computes total variability matrix for all the voices that makes the test and training set
+	# We need total variability to compute the i-vectors for all the voices
 	ndxFile = "../data/UBM/NDX/totalvariability-%s.ndx"%gender
+	# Computes the I-Vector for all the files in the training and the test dataset. The filename and I assume the label is written to the file 
 	NdxFileIVec = "../data/UBM/NDX/ivExtractor-%s.ndx"%gender
+	# Extension of the audio files
 	sourceDataExtn = "sph"
+	# Features path
 	featureFilesPath = "../data/UBM/PRM/%s/"%gender
+	# Lables path
 	labelFilesPath = "../data/UBM/LBL/%s/"%gender
 	writeListToFile(getFilesFromFolder(sourceFolder), dataList)
 	writeListToFile(getFilesFromFolder(sourceFolder), ndxFile)

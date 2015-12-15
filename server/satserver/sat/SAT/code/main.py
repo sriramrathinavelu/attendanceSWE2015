@@ -2,7 +2,7 @@ from utils import *
 from core import *
 
 gender = 'M'
-#trainUBM(getUBMSourceFolder(gender), gender)
+trainUBM(getUBMSourceFolder(gender), gender)
 gender = 'F'
 #trainUBM(getUBMSourceFolder(gender), gender)
 
@@ -11,7 +11,7 @@ gender = 'F'
 #tFile.close()
 
 gender = 'M'
-#updateUnlabeledData(getUBMSourceFolder(gender), gender)
+updateUnlabeledData(getUBMSourceFolder(gender), gender)
 
 
 testFolder = '../data/SPH'
@@ -19,4 +19,8 @@ testFile = 'sriramTest.sph'
 speaker = 'sriram'
 gender = 'M'
 
-test(testFolder, testFile, speaker, getUBMSourceFolder(gender), gender) 
+#test(testFolder, testFile, speaker, getUBMSourceFolder(gender), gender) 
+
+from interface import *
+
+#training()

@@ -61,6 +61,9 @@ def getStudGender(email):
 	stud = Student.objects.get(email=email)
 	return SATConstants.GENDER_MAP [stud.gender]
 
+def getTrainingFileName(email):
+	return fileNameFromEmail(email)+'train'
+
 
 def fileNameFromEmail(email):
 	return email.replace('@','_').replace('.','_')
@@ -76,7 +79,7 @@ class ObtainMongoAuthToken(ObtainAuthToken):
 		if serializer.is_valid():
 			user = serializer.validated_data['user']
 			token, created = MongoToken.objects.get_or_create(user=user)
-			return Response({'token': token.key}, status=HTTP_200_OK)
+			return Response({'token': token.key}, status=status.HTTP_200_OK)
 		else:
 			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -121,6 +124,7 @@ class ProfessorCRUD(APIView):
 	def post(self, request, email=None, format=None):
 		if email:
 			prof = self.get_prof(email=email)
+			logger.debug(prof.to_json())
 			serializer = ProfessorSerializer(prof, data=request.data)
 		else:
 			serializer = ProfessorSerializer(data=request.data)
@@ -243,10 +247,11 @@ class ClassRoomGet(APIView):
 	def get(self, request):
 	
 		def getCodeandName(room):
-			return {
-				"code":	room.code,
-				"name": room.name,
-			}
+			return ClassRoomSerializer(room).data 
+			#return {
+			#	"code":	room.code,
+			#	"name": room.name,
+			#}
 
 		rooms = ClassRoom.objects.filter()
 		listObj = map(getCodeandName, rooms)
@@ -320,7 +325,7 @@ class VoiceSampleUpload(APIView):
 			return Response("Filename having . or missing extension", status=status.HTTP_400_BAD_REQUEST)
 		APPDIR = os.path.abspath(os.path.dirname(__file__))
 		srcExtn = filename.split('.')[1]
-		fileName = os.path.join(APPDIR, 'data', fileNameFromEmail(email) + '.' + srcExtn)
+		fileName = os.path.join(APPDIR, 'data', getTrainingFileName(email) + '.' + srcExtn)
 		if not os.path.isfile(fileName):
 			tempSampleFile = open(fileName, 'w+')
 			tempSampleFile.write(voiceSample.read())

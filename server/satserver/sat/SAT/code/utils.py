@@ -7,6 +7,8 @@ import os
 dateStr = datetime.datetime.now().date().isoformat()
 timeStr = datetime.datetime.now().time().isoformat()[:8]
 
+CWD=os.path.dirname(os.path.realpath(__file__))
+
 def getFilesFromFolder(folderName, removeExtension=True):
 	walkGen = os.walk(folderName)
 	print folderName
@@ -117,19 +119,19 @@ def getTestingFilePath(folderName, fileName):
 	return filePath
 
 def getLabeledFile(gender):
-	return "../data/NDX/trainModel-%s.ndx"%gender
+	return os.path.join(CWD, "../data/NDX/trainModel-%s.ndx"%gender)
 
 def getUnlabeledFile(gender):
-	return "../data/NDX/Plda-%s.ndx"%gender
+	return os.path.join(CWD, "../data/NDX/Plda-%s.ndx"%gender)
 
 def getUBMSourceFolder(gender):
-	return "../data/UBM/SPH/%s/"%gender
+	return os.path.join(CWD, "../data/UBM/SPH/%s/"%gender)
 
-def updateLabeledData(speaker, gender):
+def updateLabeledData(speaker, destFileName, gender):
 	# This labeled file has to be updated everytime a user registers
 	labeledFile = getLabeledFile(gender)
 	with open(labeledFile, "a+") as lFile:
-	    lFile.write(speaker + " " + speaker + "\n")
+	    lFile.write(speaker + " " + destFileName + "\n")
 	return True
 
 def updateUnlabeledData(UBMSourceFolder, gender):
@@ -138,14 +140,15 @@ def updateUnlabeledData(UBMSourceFolder, gender):
 	writeListSplitThriceToFile(getUnlabeledFilesFromFolder(UBMSourceFolder, labeledFile), unlabeledFile)
 	return True
 
-def addTrainingSample(tempFile, speaker, gender):
-	ubmSourceFolder = getUBMSourceFolder(gender)
-	newFile = open(os.path.join(ubmSourceFolder, speaker), "w")
-	newFile.write(tempFile.read())
-	newFile.close()
-	cmd = "sox %s %s"%(os.path.join(ubmSourceFolder, speaker), os.path.join(ubmSourceFolder, speaker)+".sph")
+def convertToSPH (src, destination):
+	if not destination.endswith('.sph'):
+		destination = destination + ".sph"
+	cmd = "sox %s %s"%(src, destination)
 	args = shlex.split(cmd)
 	subprocess.call(args, cwd=CWD)
-	updateLabeledData(speaker, gender)
 
-
+def addTrainingSample(fileName, speaker, gender):
+	ubmSourceFolder = getUBMSourceFolder(gender)
+	destFileName = speaker+'train'
+	convertToSPH (fileName, os.path.join(ubmSourceFolder, destFileName)+".sph")
+	updateLabeledData(speaker, destFileName, gender)

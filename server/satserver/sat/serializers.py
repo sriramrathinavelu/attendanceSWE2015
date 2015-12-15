@@ -111,9 +111,10 @@ class StudentSerializer(serializers.Serializer):
 		return self.update(instance, validated_data)
 
 class ClassRoomSerializer(serializers.Serializer):
-	room = serializers.CharField(required=False)
-	minPoint = serializers.ListField(required=False)
-	maxPoint = serializers.ListField(required=False)
+	code = serializers.CharField(required=False)
+	name = serializers.CharField(required=False)
+	center = serializers.DictField(required=False)
+	radius = serializers.IntegerField(required=False)
 
 class GenericCourseSerializer(serializers.Serializer):
 	course_key = serializers.CharField(read_only=True,required=False)
