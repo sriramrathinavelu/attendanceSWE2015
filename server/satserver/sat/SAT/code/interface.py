@@ -16,4 +16,4 @@ def register(fileName, email, gender):
 def testing(fileName, email, gender):
 	testFolder = '../data/SPH'
 	convertToSPH (fileName, os.path.join(testFolder, email + '.sph'))
-	test(testFolder, email + '.sph', email, getUBMSourceFolder(gender), gender)
+	return test(testFolder, email + '.sph', email, getUBMSourceFolder(gender), gender)

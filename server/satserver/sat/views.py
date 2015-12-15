@@ -299,12 +299,12 @@ class TheAttendance(APIView):
 		shutil.copy(fileName, archiveFileName)
 		try:
 			os.chdir(os.path.join(APPDIR, 'SAT', 'code'))
-			interface.testing(fileName, fileNameFromEmail(email), getStudGender(email))
+			score = interface.testing(fileName, fileNameFromEmail(email), getStudGender(email))
 		except Student.DoesNotExist, e:
 			return Response("Student doesn't exist", status=status.HTTP_400_BAD_REQUEST)
 		except KeyError, e:
 			return Response("Improperly configured student gender", status=status.HTTP_400_BAD_REQUEST)
-		return Response("File uploaded successfully", status=status.HTTP_202_ACCEPTED)
+		return Response({"score":score}, status=status.HTTP_202_ACCEPTED)
 
 
 

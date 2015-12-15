@@ -99,4 +99,4 @@ def test(testFolder, testFile, speaker, UBMSourceFolder, gender):
 	normalizeFeatures2(configFiles["NormFeat"], testDataList, featureFilesPath, labelFilesPath)
 	extractIVectors(IVEXTRACTOR_CONFIG_FILE)
 	testIVectors(IVTEST_CONFIG_FILE)
-
+	return getScoreFromResult(outputFilename)

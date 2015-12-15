@@ -152,3 +152,9 @@ def addTrainingSample(fileName, speaker, gender):
 	destFileName = speaker+'train'
 	convertToSPH (fileName, os.path.join(ubmSourceFolder, destFileName)+".sph")
 	updateLabeledData(speaker, destFileName, gender)
+
+def getScoreFromResult(outputFileName):
+	outputFile = open(outputFileName)
+	score = outputFile.read().split()[4]
+	outputFile.close()
+	return score
