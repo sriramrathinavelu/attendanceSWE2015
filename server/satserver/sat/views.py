@@ -15,9 +15,10 @@ import shutil
 import json
 
 from django.core import serializers as djangoSerializers
-from django.contrib.auth import login
-from mongoengine.django.auth import User
 from mongoengine.queryset import DoesNotExist
+from django.core.mail import EmailMessage
+from mongoengine.django.auth import User
+from django.contrib.auth import login
 from django.contrib import messages
 
 from rest_framework import authentication
@@ -26,6 +27,9 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from sat.SAT.code import interface
 
 logger = logging.getLogger(__name__)
+
+THRESHOLD = 0.5
+
 
 # Decorators for authentication and authorization purposes
 
@@ -39,10 +43,13 @@ def authenticationRequired(func):
 
 def authorizationRequired(func):
 	def func_wrapper(self, request, *args, **kwds):
-		if request.user.username != kwds.get('email') and request.user.username != request.POST.get('email') and request.user.username != request.POST.get('professor'):
+		logger.debug(str(request.user) +  str(request.data))
+		if request.user.username != kwds.get('email') and request.user.username != request.POST.get('email') and request.user.username != request.POST.get('professor') and request.user.username != request.data.get('email') and request.user.username != request.data.get('professor'):
 			return Response("You do not have sufficient permission", status=status.HTTP_403_FORBIDDEN)
 		return func(self, request, *args, **kwds)
 	return func_wrapper
+
+
 
 def professorRequired(func):
 	def func_wrapper(self, request, *args, **kwds):
@@ -184,6 +191,49 @@ class StudentCourse(APIView):
 		return Response(serializedCourses, status=status.HTTP_200_OK)
 
 
+class GetCourseType(APIView):
+
+	@authenticationRequired
+	def get(self, request, course_key, format=None):
+		try:
+			course = Course.objects.get(course_key=course_key)
+		except Course.DoesNotExist, e:
+			return Response("Invalid course key", status=status.HTTP_400_BAD_REQUEST)
+		return Response({'courseType' : 'WeekEnd' if course.is_weekend else 'WeekDay'}, status=status.HTTP_200_OK)
+			
+
+class GenerateReport(APIView):
+
+	@authenticationRequired
+	def get(self, request, email, course_key, format=None):
+		try:
+			stud = Student.objects.get(email=email)
+			course = Course.objects.get(course_key=course_key)
+			fileName = AttenanceRecordManager.generateReport(
+				course,
+				stud,
+				course.professor,
+				AttenanceRecordManager.getCourseStartDate(course),
+				AttenanceRecordManager.getCurrentLocalDateTime()
+			)
+			emailMsg = EmailMessage(
+				subject = 'SAT Report',
+				body = 'Please find your requested report as ' +
+					   'as attachment',
+				to = [email]
+			)
+			emailMsg.attach (
+				'SATreport.csv',
+				open(fileName).read(),
+				'text/plain'
+			)
+			emailMsg.send()
+			return Response("Done", status=status.HTTP_201_CREATED)
+		except Student.DoesNotExist, e:
+			return Response("Invalid student", status=status.HTTP_400_BAD_REQUEST)
+		except Course.DoesNotExist, e:
+			return Response("Invalid Course", status=status.HTTP_400_BAD_REQUEST)
+			
 
 class ManualAttendance(APIView):
 
@@ -279,7 +329,7 @@ class TheAttendance(APIView):
 
 	@authenticationRequired
 	@authorizationRequired
-	def put(self, request, email=None, filename=None, format=None):
+	def put(self, request, email=None, course_key=None, filename=None, format=None):
 		try:
 			voiceSample = request.FILES['file']
 		except KeyError, e:
@@ -300,11 +350,20 @@ class TheAttendance(APIView):
 		try:
 			os.chdir(os.path.join(APPDIR, 'SAT', 'code'))
 			score = interface.testing(fileName, fileNameFromEmail(email), getStudGender(email))
+			if float(score) > THRESHOLD:
+				stud = Student.objects.get(email=email)
+				course = Course.objects.get(course_key=course_key)
+				dateTime = AttenanceRecordManager.getCurrentLocalDateTime()
+				AttenanceRecordManager.markPresent(stud, course, dateTime)
+				return Response({"score":score}, status=status.HTTP_202_ACCEPTED)
+			else:
+				return Response({"score":score}, status=status.HTTP_403_FORBIDDEN)
 		except Student.DoesNotExist, e:
 			return Response("Student doesn't exist", status=status.HTTP_400_BAD_REQUEST)
 		except KeyError, e:
-			return Response("Improperly configured student gender", status=status.HTTP_400_BAD_REQUEST)
-		return Response({"score":score}, status=status.HTTP_202_ACCEPTED)
+			return Response("Maybe student gender is not configured correctlty", status=status.HTTP_400_BAD_REQUEST)
+		except Exception, e:
+			return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -326,7 +385,7 @@ class VoiceSampleUpload(APIView):
 		APPDIR = os.path.abspath(os.path.dirname(__file__))
 		srcExtn = filename.split('.')[1]
 		fileName = os.path.join(APPDIR, 'data', getTrainingFileName(email) + '.' + srcExtn)
-		if not os.path.isfile(fileName):
+		if True or not os.path.isfile(fileName):
 			tempSampleFile = open(fileName, 'w+')
 			tempSampleFile.write(voiceSample.read())
 			tempSampleFile.close()
