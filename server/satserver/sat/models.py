@@ -104,7 +104,7 @@ class Course (Document):
 		return thisCourse
 
 class Student(Document):
-	email = EmailField(required=True, unique=True, null=False)
+	email = EmailField(required=True, unique=True, null=False,primary_key=True)
 	first_name = StringField(required=True, null=False)
 	last_name = StringField(required=True, null=False)
 	gender = IntField(required=True, null=False)

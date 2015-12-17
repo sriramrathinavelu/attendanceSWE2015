@@ -71,7 +71,7 @@ def getCurrentDate(curDateTime):
             0,
             0,
             0
-	).replace(tzinfo=pytz.timezone(TIMEZONE))
+	).replace(tzinfo=pytz.timezone(TIMEZONE)).date()
 
 def getWeekDayCourses(weekDay):
 	return Course.objects.filter(day_of_week = weekDay)
@@ -148,9 +148,11 @@ def generateLedger():
 			setupAttendanceRecord(student, course, curDate, curDateTime)
 
 	# Weekend Courses
-	weekendCourses = courses.objects.filter(is_weekend=True)
+	weekendCourses = Course.objects.filter(is_weekend=True)
 	for course in weekendCourses:
-		if curDate in course.specific_dates:
+		tzAwareDates = map(lambda x:x.replace(tzinfo=pytz.timezone(TIMEZONE)).date(),
+			course.specific_dates)
+		if curDate in tzAwareDates:
 			students = getStudentsByCourse(course)
 			for student in students:
 				setupAttendanceRecord(student, course, curDate, curDateTime)
@@ -185,7 +187,8 @@ def getReportFileName(course, startDate, endDate):
 
 def generateReport(course, student, professor, startDate, endDate):
 	records = __getRecords(course, student, startDate, endDate)
-	with open(getReportFileName(course, startDate, endDate), 'wb') as csvFile:
+	fileName = getReportFileName(course, startDate, endDate)
+	with open(fileName, 'wb') as csvFile:
 		FieldNames = REPORT_COLUMNS.keys()
 		writer = csv.DictWriter(csvFile, fieldnames=FieldNames, dialect=csv.excel_tab)
 		writer.writeheader()
@@ -195,11 +198,11 @@ def generateReport(course, student, professor, startDate, endDate):
 				'Student'	:	REPORT_COLUMNS['Student'](student),
 				'Key'		:	REPORT_COLUMNS['Key'](course),
 				'Course'	:	REPORT_COLUMNS['Course'](course),
-				'Date'		:	REPORT_COLUMNS['Date'](course),
+				'Date'		:	REPORT_COLUMNS['Date'](record),
 				'Time'		:	REPORT_COLUMNS['Time'](record),
 				'Status'	:	REPORT_COLUMNS['Status'](record),
 			})
-
+	return fileName
 
 
 def start():

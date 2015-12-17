@@ -101,8 +101,10 @@ class StudentSerializer(serializers.Serializer):
 				raise Exception("Invalid course")
 			instance.courses = _courses
 		try:
+			logger.debug(instance.to_json())
 			instance.save()
 		except NotUniqueError, e:
+			logger.debug(str(e))
 			raise Exception("User is already registered as a student")
 		return instance
 

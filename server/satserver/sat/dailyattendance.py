@@ -1,0 +1,3 @@
+import AttenanceRecordManager
+
+AttenanceRecordManager.generateLedger()
