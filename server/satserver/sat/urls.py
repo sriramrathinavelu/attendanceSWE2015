@@ -5,6 +5,7 @@ from views import *
 urlpatterns = [
 	url(r'^register/$', UserRegistration.as_view()),
 	url(r'^login/$', ObtainMongoAuthToken.as_view()),
+	url(r'^usertype/(?P<email>[^@]+@[^@]+\.[^/]+)/$', GetUserType.as_view()),
     url(r'^professor/$', ProfessorCRUD.as_view()),
     url(r'^professor/(?P<email>[^@]+@[^@]+\.[^/]+)/$', ProfessorCRUD.as_view()),
    	url(r'^professor/(?P<email>[^@]+@[^@]+\.[^/]+)/courses/$', ProfessorCourse.as_view()),

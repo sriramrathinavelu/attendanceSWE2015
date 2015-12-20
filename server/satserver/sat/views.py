@@ -202,6 +202,21 @@ class GetCourseType(APIView):
 		return Response({'courseType' : 'WeekEnd' if course.is_weekend else 'WeekDay'}, status=status.HTTP_200_OK)
 			
 
+class GetUserType(APIView):
+
+	@authenticationRequired
+	def get(self, request, email, format=None):
+		try:
+			Professor.objects.get(email=email)
+			return Response({'usertype': 'professor'}, status=status.HTTP_200_OK)
+		except Professor.DoesNotExist, e:
+			try:
+				Student.objects.get(email=email)
+				return Response({'usertype': 'student'}, status=status.HTTP_200_OK)
+			except Student.DoesNotExist, e:
+				return Response('Unknown user type', status=status.HTTP_400_BAD_REQUEST)
+
+
 class GenerateReport(APIView):
 
 	@authenticationRequired
