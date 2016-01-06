@@ -6,6 +6,12 @@ target 'attendance' do
 	pod 'DBAlertController'
 	pod 'Alamofire', '~> 3.0'
 	pod 'SwiftValidator', '3.0.1'
+	pod 'SwiftyJSON', '~> 2.3'
+	pod 'ActionSheetPicker-3.0'
+	pod 'SwiftCharts', '~> 0.3'
+	pod 'ANLongTapButton'
+	pod 'XCGLogger', '~> 3.1'
+	pod "PKHUD"
 end
 
 target 'attendanceTests' do

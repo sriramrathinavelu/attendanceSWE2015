@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is needed to check in</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.education</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -34,31 +38,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<!-- For development -->
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key><true/>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 	</dict>
-	<!-- For production, use exception list -->
-	<!--
-	<key>NSAppTransportSecurity</key>
-	<dict>
-    <key>NSExceptionDomains</key>
-    <dict>
-      <key>yourdomain.com</key>
-      <dict>
-        ## Include to allow subdomains
-        <key>NSIncludesSubdomains</key>
-        <true/>
-        ## Include to allow HTTP requests
-        <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-        <true/>
-        ## Include to specify minimum TLS version
-        <key>NSTemporaryExceptionMinimumTLSVersion</key>
-        <string>TLSv1.1</string>
-      </dict>
-    </dict>
-	</dict>
-	-->
 </dict>
 </plist>
