@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import DBAlertController
+import SwiftyJSON
 
 class GenerateReportTableViewController: UITableViewController {
     
     let cellIdentifier = "classCell"
-    
-    var courses:[Course] = coursesData // load fake data for courses
+    let requester = RequestHelper()
+    let userDefaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,16 @@ class GenerateReportTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+//        tableView.setContentOffset(CGPointMake(0, -30 ), animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,18 +42,35 @@ class GenerateReportTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        if CourseManager.sharedInstance.courseData.isEmpty {
+            let noDataLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height))
+            noDataLabel.text = "You have no course"
+            noDataLabel.textColor = UIColor.blackColor()
+            noDataLabel.textAlignment = NSTextAlignment.Center
+            self.tableView.backgroundView = noDataLabel
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            
+        } else {
+            
+            self.tableView.backgroundView = nil
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+            
+        }
+        
         return 1
+
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  courses.count
+        return  CourseManager.sharedInstance.courseData.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ClassCell
         
-        let course = courses[indexPath.row] as Course
+        let course = CourseManager.sharedInstance.courseData[indexPath.row] as Course
 
         cell.course = course
 
@@ -53,7 +79,7 @@ class GenerateReportTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let course = courses[indexPath.row]
+        let course = CourseManager.sharedInstance.courseData[indexPath.row]
         
         sendReportRequest(course)
         
@@ -61,11 +87,38 @@ class GenerateReportTableViewController: UITableViewController {
     
     func sendReportRequest(course: Course) {
         
-        let message = "Report for \(course.getCourseCode()) is sent to your email. "
+        Utils.beginHUD(withText: "Getting report...")
         
-        let alertController = DBAlertController(title: "Attendance", message: message, preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        alertController.show()
+        guard let email = self.userDefaults.stringForKey(UDKeys.uname) else {
+            log.warning("User email is empty, user info updating aborted.")
+            return
+        }
+        
+        requester.getUserReport(course.getCourseKey(), email: email, failureCallback: { (response) -> Void in
+            
+            }) { (response) -> Void in
+                
+                if let res = response.response {
+                    
+                    let json = JSON(data: response.data!)
+                    
+                    switch res.statusCode {
+                    case 201:
+                        
+                        Utils.alert("Reports", message: "Report for \(course.getCourseKey()) is sent to your email. ")
+                        Utils.endHUD()
+                        
+                    default:
+                        Utils.alert("Manual Attendance Error", message: "\(json.stringValue) \nCode \(res.statusCode)")
+                        Utils.endHUD(false)
+                    }
+                }
+        }
+        
+        
+        let message = "Report for \(course.getCourseKey()) is sent to your email. "
+        
+        Utils.alert("Attendance", message: message)
     }
 
 

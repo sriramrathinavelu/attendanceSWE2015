@@ -1,16 +1,34 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.0.3)
   - Alamofire (3.1.2)
+  - ANLongTapButton (1.0.0)
   - DBAlertController (0.2.1)
+  - PKHUD (2.2.5)
+  - SwiftCharts (0.3)
   - SwiftValidator (3.0.1)
+  - SwiftyJSON (2.3.1)
+  - XCGLogger (3.1.1)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0
   - Alamofire (~> 3.0)
+  - ANLongTapButton
   - DBAlertController
+  - PKHUD
+  - SwiftCharts (~> 0.3)
   - SwiftValidator (= 3.0.1)
+  - SwiftyJSON (~> 2.3)
+  - XCGLogger (~> 3.1)
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 11f2053085d3088dc1ef9d38a9f11c18b528dd9e
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
+  ANLongTapButton: 48cf50595db52fed9506c5281969a8a554f1feac
   DBAlertController: 5941c4f38daad9ae803ab3739e79b5b7a78e1da4
+  PKHUD: 15d9db01fb008bb9247c6d785c585f587955b113
+  SwiftCharts: c66a449d58f9c811c467f865a47b1b6136b49499
   SwiftValidator: c59223144754045d7691febdc3b3ecc2e73b609c
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  XCGLogger: e111a313f609432394c3ae378d99511634fd2e3c
 
 COCOAPODS: 0.39.0

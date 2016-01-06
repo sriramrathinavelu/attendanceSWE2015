@@ -8,9 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		72387E08596D356AB3913089 /* Pods_attendance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD79D639B0F12A0FDCAD6764 /* Pods_attendance.framework */; };
+		921D7D7E1C0D523C00EE30E5 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921D7D7D1C0D523C00EE30E5 /* RequestHelper.swift */; };
+		924BE0C41C22FA6F00BCAFFE /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924BE0C31C22FA6F00BCAFFE /* Classroom.swift */; };
 		9263B7C51BE80F1D00DF2AEE /* GenerateReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9263B7C41BE80F1D00DF2AEE /* GenerateReportTableViewController.swift */; };
 		9263B7C71BE8270400DF2AEE /* ManualAttendanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9263B7C61BE8270400DF2AEE /* ManualAttendanceTableViewController.swift */; };
 		9263B7C91BE82A2900DF2AEE /* TakeManualAttendanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9263B7C81BE82A2900DF2AEE /* TakeManualAttendanceTableViewController.swift */; };
+		9265C2AF1BFA9D6900376A6A /* StudentManageCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9265C2AE1BFA9D6900376A6A /* StudentManageCourseTableViewController.swift */; };
+		9265C2B11BFC778A00376A6A /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9265C2B01BFC778900376A6A /* Course.swift */; };
+		9265C2B51BFC811D00376A6A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9265C2B41BFC811D00376A6A /* Constants.swift */; };
+		92712F1D1C0B22470092C8B8 /* StudentAddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92712F1C1C0B22470092C8B8 /* StudentAddCourseViewController.swift */; };
 		92787EC71BF1617E00926908 /* AddCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92787EC61BF1617E00926908 /* AddCourseTableViewController.swift */; };
 		9287845B1BDF131C0002EA0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287845A1BDF131C0002EA0F /* AppDelegate.swift */; };
 		928784601BDF131C0002EA0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9287845E1BDF131C0002EA0F /* Main.storyboard */; };
@@ -18,19 +24,31 @@
 		928784651BDF131C0002EA0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928784631BDF131C0002EA0F /* LaunchScreen.storyboard */; };
 		928784701BDF131C0002EA0F /* attendanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287846F1BDF131C0002EA0F /* attendanceTests.swift */; };
 		9287847B1BDF131C0002EA0F /* attendanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287847A1BDF131C0002EA0F /* attendanceUITests.swift */; };
-		9287848A1BDF153E0002EA0F /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928784881BDF153E0002EA0F /* DashViewController.swift */; };
+		9287848A1BDF153E0002EA0F /* DebugDashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928784881BDF153E0002EA0F /* DebugDashViewController.swift */; };
 		9287848B1BDF153E0002EA0F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928784891BDF153E0002EA0F /* LoginViewController.swift */; };
 		9287848F1BDF15A90002EA0F /* ManageClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287848C1BDF15A90002EA0F /* ManageClassTableViewController.swift */; };
-		928784901BDF15A90002EA0F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287848D1BDF15A90002EA0F /* RegisterViewController.swift */; };
 		928784911BDF15A90002EA0F /* Sample-data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287848E1BDF15A90002EA0F /* Sample-data.swift */; };
-		928784931BDF16280002EA0F /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928784921BDF16280002EA0F /* Course.swift */; };
 		928784951BDF164D0002EA0F /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928784941BDF164D0002EA0F /* ClassCell.swift */; };
-		928784971BDF16710002EA0F /* ClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928784961BDF16710002EA0F /* ClassDetailViewController.swift */; };
 		928784991BDF168C0002EA0F /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928784981BDF168C0002EA0F /* Utility.swift */; };
-		9287849B1BDF1DA30002EA0F /* SelectRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9287849A1BDF1DA30002EA0F /* SelectRoleViewController.swift */; };
-		92DA8F451BEEC9F400CC70BB /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA8F441BEEC9F400CC70BB /* RegisterTableViewController.swift */; };
+		92A7762B1C00A53A001D5943 /* ClassDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7762A1C00A538001D5943 /* ClassDetailTableViewController.swift */; };
+		92D918361C0F810900218892 /* StudentCheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D918351C0F810900218892 /* StudentCheckInViewController.swift */; };
+		92D918391C11472D00218892 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D918381C11472D00218892 /* CoreLocation.framework */; };
+		92D918481C198DBE00218892 /* CalendarLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D9183D1C198DBE00218892 /* CalendarLogic.swift */; };
+		92D918491C198DBE00218892 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D9183E1C198DBE00218892 /* CalendarView.swift */; };
+		92D9184A1C198DBE00218892 /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D9183F1C198DBE00218892 /* CalendarView.xib */; };
+		92D9184B1C198DBE00218892 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D918401C198DBE00218892 /* Date.swift */; };
+		92D9184C1C198DBE00218892 /* DayCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D918411C198DBE00218892 /* DayCollectionCell.swift */; };
+		92D9184D1C198DBE00218892 /* DayCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D918421C198DBE00218892 /* DayCollectionCell.xib */; };
+		92D9184E1C198DBE00218892 /* MonthCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D918431C198DBE00218892 /* MonthCollectionCell.swift */; };
+		92D9184F1C198DBE00218892 /* MonthCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D918441C198DBE00218892 /* MonthCollectionCell.xib */; };
+		92D918501C198DBE00218892 /* NSDateAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D918451C198DBE00218892 /* NSDateAdditions.swift */; };
+		92D918511C198DBE00218892 /* WeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D918461C198DBE00218892 /* WeekHeaderView.swift */; };
+		92D918521C198DBE00218892 /* WeekHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D918471C198DBE00218892 /* WeekHeaderView.xib */; };
+		92D918541C19A33100218892 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D918531C19A33100218892 /* CalendarViewController.swift */; };
+		92D918561C1BCA7F00218892 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D918551C1BCA7F00218892 /* DashboardViewController.swift */; };
 		92DA8F471BF01E7D00CC70BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA8F461BF01E7D00CC70BB /* User.swift */; };
 		92DA8F491BF0261E00CC70BB /* RegisterStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA8F481BF0261E00CC70BB /* RegisterStudentViewController.swift */; };
+		92E1A9CC1C06CC08001E7A00 /* RegisterUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1A9CB1C06CBFA001E7A00 /* RegisterUserTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,9 +70,15 @@
 
 /* Begin PBXFileReference section */
 		1CEB521D941BD559623319C7 /* Pods-attendance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-attendance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-attendance/Pods-attendance.debug.xcconfig"; sourceTree = "<group>"; };
+		921D7D7D1C0D523C00EE30E5 /* RequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
+		924BE0C31C22FA6F00BCAFFE /* Classroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Classroom.swift; path = Model/Classroom.swift; sourceTree = "<group>"; };
 		9263B7C41BE80F1D00DF2AEE /* GenerateReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateReportTableViewController.swift; sourceTree = "<group>"; };
 		9263B7C61BE8270400DF2AEE /* ManualAttendanceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualAttendanceTableViewController.swift; sourceTree = "<group>"; };
 		9263B7C81BE82A2900DF2AEE /* TakeManualAttendanceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeManualAttendanceTableViewController.swift; sourceTree = "<group>"; };
+		9265C2AE1BFA9D6900376A6A /* StudentManageCourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentManageCourseTableViewController.swift; sourceTree = "<group>"; };
+		9265C2B01BFC778900376A6A /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = Model/Course.swift; sourceTree = "<group>"; };
+		9265C2B41BFC811D00376A6A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		92712F1C1C0B22470092C8B8 /* StudentAddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAddCourseViewController.swift; sourceTree = "<group>"; };
 		92787EC61BF1617E00926908 /* AddCourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseTableViewController.swift; sourceTree = "<group>"; };
 		928784571BDF131C0002EA0F /* attendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = attendance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9287845A1BDF131C0002EA0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,19 +92,31 @@
 		928784761BDF131C0002EA0F /* attendanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = attendanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9287847A1BDF131C0002EA0F /* attendanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = attendanceUITests.swift; sourceTree = "<group>"; };
 		9287847C1BDF131C0002EA0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		928784881BDF153E0002EA0F /* DashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashViewController.swift; sourceTree = "<group>"; };
+		928784881BDF153E0002EA0F /* DebugDashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugDashViewController.swift; sourceTree = "<group>"; };
 		928784891BDF153E0002EA0F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9287848C1BDF15A90002EA0F /* ManageClassTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageClassTableViewController.swift; sourceTree = "<group>"; };
-		9287848D1BDF15A90002EA0F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9287848E1BDF15A90002EA0F /* Sample-data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sample-data.swift"; sourceTree = "<group>"; };
-		928784921BDF16280002EA0F /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		928784941BDF164D0002EA0F /* ClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
-		928784961BDF16710002EA0F /* ClassDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailViewController.swift; sourceTree = "<group>"; };
 		928784981BDF168C0002EA0F /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
-		9287849A1BDF1DA30002EA0F /* SelectRoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRoleViewController.swift; sourceTree = "<group>"; };
-		92DA8F441BEEC9F400CC70BB /* RegisterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
+		92A7762A1C00A538001D5943 /* ClassDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailTableViewController.swift; sourceTree = "<group>"; };
+		92D918351C0F810900218892 /* StudentCheckInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentCheckInViewController.swift; sourceTree = "<group>"; };
+		92D918381C11472D00218892 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		92D9183D1C198DBE00218892 /* CalendarLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarLogic.swift; sourceTree = "<group>"; };
+		92D9183E1C198DBE00218892 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		92D9183F1C198DBE00218892 /* CalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
+		92D918401C198DBE00218892 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		92D918411C198DBE00218892 /* DayCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionCell.swift; sourceTree = "<group>"; };
+		92D918421C198DBE00218892 /* DayCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayCollectionCell.xib; sourceTree = "<group>"; };
+		92D918431C198DBE00218892 /* MonthCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionCell.swift; sourceTree = "<group>"; };
+		92D918441C198DBE00218892 /* MonthCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthCollectionCell.xib; sourceTree = "<group>"; };
+		92D918451C198DBE00218892 /* NSDateAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateAdditions.swift; sourceTree = "<group>"; };
+		92D918461C198DBE00218892 /* WeekHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderView.swift; sourceTree = "<group>"; };
+		92D918471C198DBE00218892 /* WeekHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekHeaderView.xib; sourceTree = "<group>"; };
+		92D918531C19A33100218892 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		92D918551C1BCA7F00218892 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		92DA8F461BF01E7D00CC70BB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		92DA8F481BF0261E00CC70BB /* RegisterStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterStudentViewController.swift; sourceTree = "<group>"; };
+		92E1A9CB1C06CBFA001E7A00 /* RegisterUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserTableViewController.swift; sourceTree = "<group>"; };
 		BD79D639B0F12A0FDCAD6764 /* Pods_attendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_attendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4DDAA54F56B46BCAC76C210 /* Pods-attendance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-attendance.release.xcconfig"; path = "Pods/Target Support Files/Pods-attendance/Pods-attendance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92D918391C11472D00218892 /* CoreLocation.framework in Frameworks */,
 				72387E08596D356AB3913089 /* Pods_attendance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,9 +151,82 @@
 		2B27574E03FC84678E3EEDFD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92D918381C11472D00218892 /* CoreLocation.framework */,
 				BD79D639B0F12A0FDCAD6764 /* Pods_attendance.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9265C2B21BFC782000376A6A /* Login & Registration */ = {
+			isa = PBXGroup;
+			children = (
+				928784891BDF153E0002EA0F /* LoginViewController.swift */,
+				92E1A9CB1C06CBFA001E7A00 /* RegisterUserTableViewController.swift */,
+				92DA8F481BF0261E00CC70BB /* RegisterStudentViewController.swift */,
+			);
+			name = "Login & Registration";
+			sourceTree = "<group>";
+		};
+		9265C2B31BFC785500376A6A /* Manage Course */ = {
+			isa = PBXGroup;
+			children = (
+				9287848C1BDF15A90002EA0F /* ManageClassTableViewController.swift */,
+				92A7762A1C00A538001D5943 /* ClassDetailTableViewController.swift */,
+				92787EC61BF1617E00926908 /* AddCourseTableViewController.swift */,
+				92D918531C19A33100218892 /* CalendarViewController.swift */,
+			);
+			name = "Manage Course";
+			sourceTree = "<group>";
+		};
+		9280918A1C07E4C700759839 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9265C2B21BFC782000376A6A /* Login & Registration */,
+				92D918551C1BCA7F00218892 /* DashboardViewController.swift */,
+				928784881BDF153E0002EA0F /* DebugDashViewController.swift */,
+				9280918C1C07E53F00759839 /* Professor */,
+				9280918D1C07E86400759839 /* Student */,
+				9265C2B31BFC785500376A6A /* Manage Course */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9280918B1C07E51600759839 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				928784981BDF168C0002EA0F /* Utility.swift */,
+				921D7D7D1C0D523C00EE30E5 /* RequestHelper.swift */,
+				9265C2B41BFC811D00376A6A /* Constants.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		9280918C1C07E53F00759839 /* Professor */ = {
+			isa = PBXGroup;
+			children = (
+				9263B7C41BE80F1D00DF2AEE /* GenerateReportTableViewController.swift */,
+				9263B7C81BE82A2900DF2AEE /* TakeManualAttendanceTableViewController.swift */,
+				9263B7C61BE8270400DF2AEE /* ManualAttendanceTableViewController.swift */,
+			);
+			name = Professor;
+			sourceTree = "<group>";
+		};
+		9280918D1C07E86400759839 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				92D918351C0F810900218892 /* StudentCheckInViewController.swift */,
+				9265C2AE1BFA9D6900376A6A /* StudentManageCourseTableViewController.swift */,
+				92712F1C1C0B22470092C8B8 /* StudentAddCourseViewController.swift */,
+			);
+			name = Student;
+			sourceTree = "<group>";
+		};
+		9280918E1C07E88800759839 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				928784941BDF164D0002EA0F /* ClassCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		9287844E1BDF131C0002EA0F = {
@@ -144,28 +254,16 @@
 		928784591BDF131C0002EA0F /* attendance */ = {
 			isa = PBXGroup;
 			children = (
-				92787EC61BF1617E00926908 /* AddCourseTableViewController.swift */,
 				9287845A1BDF131C0002EA0F /* AppDelegate.swift */,
-				9263B7C41BE80F1D00DF2AEE /* GenerateReportTableViewController.swift */,
-				9287845E1BDF131C0002EA0F /* Main.storyboard */,
-				9263B7C81BE82A2900DF2AEE /* TakeManualAttendanceTableViewController.swift */,
-				928784881BDF153E0002EA0F /* DashViewController.swift */,
-				9263B7C61BE8270400DF2AEE /* ManualAttendanceTableViewController.swift */,
-				9287849A1BDF1DA30002EA0F /* SelectRoleViewController.swift */,
-				92DA8F441BEEC9F400CC70BB /* RegisterTableViewController.swift */,
-				928784891BDF153E0002EA0F /* LoginViewController.swift */,
-				9287848C1BDF15A90002EA0F /* ManageClassTableViewController.swift */,
-				92DA8F481BF0261E00CC70BB /* RegisterStudentViewController.swift */,
-				928784941BDF164D0002EA0F /* ClassCell.swift */,
-				928784961BDF16710002EA0F /* ClassDetailViewController.swift */,
-				92DA8F461BF01E7D00CC70BB /* User.swift */,
-				928784981BDF168C0002EA0F /* Utility.swift */,
-				928784921BDF16280002EA0F /* Course.swift */,
-				9287848D1BDF15A90002EA0F /* RegisterViewController.swift */,
-				9287848E1BDF15A90002EA0F /* Sample-data.swift */,
+				92D9183C1C198DBE00218892 /* CalendarKit */,
+				9280918E1C07E88800759839 /* View */,
+				9280918A1C07E4C700759839 /* Controller */,
+				92A776291C000D71001D5943 /* Model */,
+				9280918B1C07E51600759839 /* Utility */,
 				928784611BDF131C0002EA0F /* Assets.xcassets */,
 				928784631BDF131C0002EA0F /* LaunchScreen.storyboard */,
-				928784661BDF131C0002EA0F /* Info.plist */,
+				9287845E1BDF131C0002EA0F /* Main.storyboard */,
+				92D918371C11085C00218892 /* Supporting files */,
 			);
 			path = attendance;
 			sourceTree = "<group>";
@@ -186,6 +284,43 @@
 				9287847C1BDF131C0002EA0F /* Info.plist */,
 			);
 			path = attendanceUITests;
+			sourceTree = "<group>";
+		};
+		92A776291C000D71001D5943 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				924BE0C31C22FA6F00BCAFFE /* Classroom.swift */,
+				92DA8F461BF01E7D00CC70BB /* User.swift */,
+				9287848E1BDF15A90002EA0F /* Sample-data.swift */,
+				9265C2B01BFC778900376A6A /* Course.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		92D918371C11085C00218892 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				928784661BDF131C0002EA0F /* Info.plist */,
+			);
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		92D9183C1C198DBE00218892 /* CalendarKit */ = {
+			isa = PBXGroup;
+			children = (
+				92D9183D1C198DBE00218892 /* CalendarLogic.swift */,
+				92D9183E1C198DBE00218892 /* CalendarView.swift */,
+				92D9183F1C198DBE00218892 /* CalendarView.xib */,
+				92D918401C198DBE00218892 /* Date.swift */,
+				92D918411C198DBE00218892 /* DayCollectionCell.swift */,
+				92D918421C198DBE00218892 /* DayCollectionCell.xib */,
+				92D918431C198DBE00218892 /* MonthCollectionCell.swift */,
+				92D918441C198DBE00218892 /* MonthCollectionCell.xib */,
+				92D918451C198DBE00218892 /* NSDateAdditions.swift */,
+				92D918461C198DBE00218892 /* WeekHeaderView.swift */,
+				92D918471C198DBE00218892 /* WeekHeaderView.xib */,
+			);
+			path = CalendarKit;
 			sourceTree = "<group>";
 		};
 		E22EFCAAB743A96AB71CEC9E /* Pods */ = {
@@ -309,7 +444,11 @@
 			files = (
 				928784651BDF131C0002EA0F /* LaunchScreen.storyboard in Resources */,
 				928784621BDF131C0002EA0F /* Assets.xcassets in Resources */,
+				92D918521C198DBE00218892 /* WeekHeaderView.xib in Resources */,
+				92D9184A1C198DBE00218892 /* CalendarView.xib in Resources */,
 				928784601BDF131C0002EA0F /* Main.storyboard in Resources */,
+				92D9184F1C198DBE00218892 /* MonthCollectionCell.xib in Resources */,
+				92D9184D1C198DBE00218892 /* DayCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,20 +521,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92712F1D1C0B22470092C8B8 /* StudentAddCourseViewController.swift in Sources */,
 				92DA8F491BF0261E00CC70BB /* RegisterStudentViewController.swift in Sources */,
+				92D918491C198DBE00218892 /* CalendarView.swift in Sources */,
+				9265C2B51BFC811D00376A6A /* Constants.swift in Sources */,
 				9263B7C51BE80F1D00DF2AEE /* GenerateReportTableViewController.swift in Sources */,
-				92DA8F451BEEC9F400CC70BB /* RegisterTableViewController.swift in Sources */,
-				928784971BDF16710002EA0F /* ClassDetailViewController.swift in Sources */,
-				9287849B1BDF1DA30002EA0F /* SelectRoleViewController.swift in Sources */,
 				92DA8F471BF01E7D00CC70BB /* User.swift in Sources */,
 				928784951BDF164D0002EA0F /* ClassCell.swift in Sources */,
-				928784931BDF16280002EA0F /* Course.swift in Sources */,
+				92D918561C1BCA7F00218892 /* DashboardViewController.swift in Sources */,
+				924BE0C41C22FA6F00BCAFFE /* Classroom.swift in Sources */,
+				92D918511C198DBE00218892 /* WeekHeaderView.swift in Sources */,
+				92D918481C198DBE00218892 /* CalendarLogic.swift in Sources */,
+				9265C2B11BFC778A00376A6A /* Course.swift in Sources */,
+				9265C2AF1BFA9D6900376A6A /* StudentManageCourseTableViewController.swift in Sources */,
+				92D918361C0F810900218892 /* StudentCheckInViewController.swift in Sources */,
+				92D9184C1C198DBE00218892 /* DayCollectionCell.swift in Sources */,
 				92787EC71BF1617E00926908 /* AddCourseTableViewController.swift in Sources */,
+				92A7762B1C00A53A001D5943 /* ClassDetailTableViewController.swift in Sources */,
 				928784991BDF168C0002EA0F /* Utility.swift in Sources */,
 				9287848B1BDF153E0002EA0F /* LoginViewController.swift in Sources */,
+				92D9184E1C198DBE00218892 /* MonthCollectionCell.swift in Sources */,
 				9263B7C71BE8270400DF2AEE /* ManualAttendanceTableViewController.swift in Sources */,
-				9287848A1BDF153E0002EA0F /* DashViewController.swift in Sources */,
-				928784901BDF15A90002EA0F /* RegisterViewController.swift in Sources */,
+				92E1A9CC1C06CC08001E7A00 /* RegisterUserTableViewController.swift in Sources */,
+				9287848A1BDF153E0002EA0F /* DebugDashViewController.swift in Sources */,
+				921D7D7E1C0D523C00EE30E5 /* RequestHelper.swift in Sources */,
+				92D918501C198DBE00218892 /* NSDateAdditions.swift in Sources */,
+				92D918541C19A33100218892 /* CalendarViewController.swift in Sources */,
+				92D9184B1C198DBE00218892 /* Date.swift in Sources */,
 				928784911BDF15A90002EA0F /* Sample-data.swift in Sources */,
 				9263B7C91BE82A2900DF2AEE /* TakeManualAttendanceTableViewController.swift in Sources */,
 				9287848F1BDF15A90002EA0F /* ManageClassTableViewController.swift in Sources */,

@@ -8,6 +8,8 @@
 
 import UIKit
 import DBAlertController
+import ActionSheetPicker_3_0
+import PKHUD
 
 // format time and date
 extension NSDate {
@@ -22,7 +24,7 @@ extension NSDate {
         return formatter.dateFromString(date)!
     }
     
-    func stringFromDate(date: NSDate, format: String) -> String {
+    func stringFromDate(date: NSDate, format: String? = "MMM d, yyyy H:mm a") -> String {
         
         let dateFormatter = NSDateFormatter()
         
@@ -33,27 +35,126 @@ extension NSDate {
     }
 }
 
+// make NSDate comparable
+public func ==(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs === rhs || lhs.compare(rhs) == .OrderedSame
+}
+
+public func <(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.compare(rhs) == .OrderedAscending
+}
+
+extension NSDate: Comparable { }
+
+extension String {
+    func formatDateStringForServer(fromFormat format: String) -> String {
+
+        let date = NSDate().dateFromString(self, format: format)
+        
+        return NSDate().stringFromDate(date, format: Config.dateFormatInServer)
+    }
+    
+    func formatDateStringFromString(fromFormat fromFormat: String? = Config.dateFormatInServer, toFormat: String) -> String {
+        
+        let date = NSDate().dateFromString(self, format: fromFormat!)
+        
+        return NSDate().stringFromDate(date, format: toFormat)
+    }
+}
+
 class Utils {
     
+    /// Display an alert view
     static func alert(title: String, message: String,
         okAction: String? = "OK",
         cancelAction: String? = nil,
+        deleteAction: String? = nil,
         okCallback: ((action: UIAlertAction!) -> Void)? = nil,
-        cancelCallback: ((action: UIAlertAction!) -> Void)? = nil ) {
+        cancelCallback: ((action: UIAlertAction!) -> Void)? = nil,
+        deleteCallback: ((action: UIAlertAction!) -> Void)? = nil ) {
         
         let alertController = DBAlertController(
             title: title,
             message: message,
             preferredStyle: .Alert)
-            
-        alertController.addAction(UIAlertAction(title: okAction, style: .Default, handler: okCallback))
+        
+        if let okAction = okAction {
+            alertController.addAction(UIAlertAction(title: okAction, style: .Default, handler: okCallback))
+        }
             
         if let cancelAction = cancelAction {
             alertController.addAction(UIAlertAction(title: cancelAction, style: .Cancel, handler: cancelCallback))
         }
-            
+        
+        if let deleteAction = deleteAction {
+            alertController.addAction(UIAlertAction(title: deleteAction, style: .Destructive, handler: deleteCallback))
+        }
+        
         alertController.show()
     }
+//    
+//    static func textHUD(text: String) {
+//        PKHUD.sharedHUD.contentView = PKHUDTextView(text: text)
+//    }
+//    
+//    static func hideHUD(duration: Double? = nil) {
+//        if let duration = duration {
+//            PKHUD.sharedHUD.hide(afterDelay: duration)
+//        } else {
+//            PKHUD.sharedHUD.hide()
+//        }
+//    }
+//    
+//    static func showHUD() {
+//        PKHUD.sharedHUD.show()
+//    }
+    
+    static func beginHUD(withText text:String? = nil) {
+        if let text = text {
+            
+            PKHUD.sharedHUD.contentView = PKHUDTextView(text: text)
+            PKHUD.sharedHUD.show()
+        } else {
+            
+            PKHUD.sharedHUD.contentView = PKHUDProgressView()
+            PKHUD.sharedHUD.show()
+        }
+    }
+    
+    static func endHUD(isSuccess: Bool? = true) {
+        if let isSuccess = isSuccess {
+            switch isSuccess {
+            case true:
+                PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                PKHUD.sharedHUD.hide(afterDelay: 1.0)
+            case false:
+                PKHUD.sharedHUD.contentView = PKHUDErrorView()
+                PKHUD.sharedHUD.hide(afterDelay: 1.0)
+            }
+        }
+    }
+    
+    static func log(title:String, printBody: () -> Void ) {
+        
+        if Config.debug == true {
+            
+            print("\n\n -------", NSDate(), "---------\n", "======= \(title) ======\n")
+            
+            printBody()
+            
+            print("------ *** ------\n\n")
+            
+            
+        }
+    }
+}
+
+// A Regex operator
+infix operator =~ {}
+
+func =~(string:String, regex:String) -> Bool {
+
+    return string.rangeOfString(regex, options: .RegularExpressionSearch) != nil
 }
 
 
@@ -103,4 +204,18 @@ extension UIImage {
         return newImage
     }
 
+}
+
+class Env {
+    
+    static var iPad: Bool {
+        return UIDevice.currentDevice().userInterfaceIdiom == .Pad
+    }
+}
+
+extension Array {
+    
+    public func mapWithIndex<T> (f: (Int, Element) -> T) -> [T] {
+        return zip((self.startIndex ..< self.endIndex), self).map(f)
+    }
 }
