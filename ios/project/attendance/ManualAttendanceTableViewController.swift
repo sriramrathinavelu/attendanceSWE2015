@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import DBAlertController
 
 class ManualAttendanceTableViewController: UITableViewController {
     
     let cellIdentifier = "classCell"
-    
-    var courses:[Course] = coursesData // load fake data for courses
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +21,10 @@ class ManualAttendanceTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,18 +34,35 @@ class ManualAttendanceTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        if CourseManager.sharedInstance.courseData.isEmpty {
+            let noDataLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height))
+            noDataLabel.text = "You have no course"
+            noDataLabel.textColor = UIColor.blackColor()
+            noDataLabel.textAlignment = NSTextAlignment.Center
+            self.tableView.backgroundView = noDataLabel
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            
+        } else {
+            
+            self.tableView.backgroundView = nil
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+            
+        }
+        
         return 1
+
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  courses.count
+        return  CourseManager.sharedInstance.courseData.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ClassCell
         
-        let course = courses[indexPath.row] as Course
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ClassCell
+        let course = CourseManager.sharedInstance.courseData[indexPath.row] as Course
 
         cell.course = course
 
@@ -63,7 +81,7 @@ class ManualAttendanceTableViewController: UITableViewController {
             let path = self.tableView.indexPathForSelectedRow!
             
             // set destination course
-            svc.selectedCourse = courses[path.row]
+            svc.selectedCourse = CourseManager.sharedInstance.courseData[path.row]
             
         }
     }

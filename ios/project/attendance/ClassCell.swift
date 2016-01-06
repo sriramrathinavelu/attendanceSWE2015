@@ -15,7 +15,7 @@ class ClassCell: UITableViewCell {
     
     var course: Course! {
         didSet {
-            codeLabel.text = course.code
+            codeLabel.text = course.getCourseKey()
             nameLabel.text = course.name
         }
     }

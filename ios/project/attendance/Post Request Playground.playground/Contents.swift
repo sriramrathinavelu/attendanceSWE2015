@@ -1,21 +1,34 @@
-//: 
 import UIKit
 
-let info = [
-    "email": "test1001@itu.edu",
-    "first_name": "Professor",
-    "last_name": "NotStudent"
-]
+let now = NSDate()
+// "Sep 23, 2015, 10:26 AM"
+let olderDate = NSDate(timeIntervalSinceNow: -10000)
+// "Sep 23, 2015, 7:40 AM"
 
-let token = "a4eb2d5118e4076f3b5a2eaaec4414415f0e6a37d40f"
+var order = NSCalendar.currentCalendar().compareDate(now, toDate: olderDate,
+    toUnitGranularity: .Hour)
 
-let headers = [
-    "Authorization": "Token \(token)",
-    //                "Content-Type": "application/x-www-form-urlencoded"
-]
+switch order {
+case .OrderedDescending:
+    print("DESCENDING")
+case .OrderedAscending:
+    print("ASCENDING")
+case .OrderedSame:
+    print("SAME")
+}
 
+// Compare to hour: SAME
 
-let url = "http://23.236.59.88:8000/professor/\(info["email"]!)"
+order = NSCalendar.currentCalendar().compareDate(now, toDate: olderDate,
+    toUnitGranularity: .Day)
 
-print(url)
+switch order {
+case .OrderedDescending:
+    print("DESCENDING")
+case .OrderedAscending:
+    print("ASCENDING")
+case .OrderedSame:
+    print("SAME")
+}
 
+// Compare to day: DESCENDING

@@ -84,12 +84,24 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-attendance/ANLongTapButton.framework"
+  install_framework "Pods-attendance/ActionSheetPicker_3_0.framework"
   install_framework "Pods-attendance/Alamofire.framework"
   install_framework "Pods-attendance/DBAlertController.framework"
+  install_framework "Pods-attendance/PKHUD.framework"
+  install_framework "Pods-attendance/SwiftCharts.framework"
   install_framework "Pods-attendance/SwiftValidator.framework"
+  install_framework "Pods-attendance/SwiftyJSON.framework"
+  install_framework "Pods-attendance/XCGLogger.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-attendance/ANLongTapButton.framework"
+  install_framework "Pods-attendance/ActionSheetPicker_3_0.framework"
   install_framework "Pods-attendance/Alamofire.framework"
   install_framework "Pods-attendance/DBAlertController.framework"
+  install_framework "Pods-attendance/PKHUD.framework"
+  install_framework "Pods-attendance/SwiftCharts.framework"
   install_framework "Pods-attendance/SwiftValidator.framework"
+  install_framework "Pods-attendance/SwiftyJSON.framework"
+  install_framework "Pods-attendance/XCGLogger.framework"
 fi
